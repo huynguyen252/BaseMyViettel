@@ -181,6 +181,7 @@ public abstract class ViewFragment<P extends IPresenter>
   @Override
   public void onDestroyView() {
     super.onDestroyView();
+    mPresenter.onDestroyView();
   }
 
   @Override

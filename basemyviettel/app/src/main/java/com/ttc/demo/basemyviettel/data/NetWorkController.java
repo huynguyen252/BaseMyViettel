@@ -1,9 +1,5 @@
 package com.ttc.demo.basemyviettel.data;
 
-import android.app.Activity;
-import android.content.Context;
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
@@ -13,18 +9,11 @@ import com.google.gson.stream.JsonWriter;
 import com.tbruyelle.rxpermissions.BuildConfig;
 import com.ttc.demo.basemyviettel.data.api.GEMViettelAPI;
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
-import com.ttc.demo.basemyviettel.data.model.SimpleResult;
 import com.ttc.demo.basemyviettel.utils.Constants;
-import com.ttc.demo.basemyviettel.utils.Utilities;
+import com.ttc.demo.basemyviettel.interact.ViettelCallback;
 
 import java.io.IOException;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Type;
 import java.security.cert.CertificateException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
@@ -34,28 +23,14 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 import okhttp3.CertificatePinner;
-import okhttp3.CipherSuite;
-import okhttp3.ConnectionSpec;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
-import okhttp3.Protocol;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
-import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -181,7 +156,7 @@ public class NetWorkController {
 
     //=====================================================================
 
-    private static GEMViettelAPI getApiBuilderRxJava() {
+    public static GEMViettelAPI getApiBuilderRxJava() {
         if (apiBuilderRxJava == null) {
             Gson gson = new GsonBuilder()
                     .setLenient()
@@ -278,11 +253,9 @@ public class NetWorkController {
         }
     }
 
-    public static void getCommonSettingResult(String token, Observer<GetCommonSettingResult> observer) {
-        getApiBuilderRxJava().getCommonSetting(token)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
+    public static void getCommonSettingResult(String token, ViettelCallback<GetCommonSettingResult> callback) {
+        Call<GetCommonSettingResult> call = getAPIBuilder().getCommonSetting(token);
+        call.enqueue(callback);
     }
 
 }

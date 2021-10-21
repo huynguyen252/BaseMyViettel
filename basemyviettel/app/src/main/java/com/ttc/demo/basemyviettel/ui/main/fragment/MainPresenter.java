@@ -4,15 +4,11 @@ import com.gemvietnam.base.viper.Presenter;
 import com.gemvietnam.base.viper.interfaces.ContainerView;
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
 import com.ttc.demo.basemyviettel.utils.DialogUtils;
+import com.ttc.demo.basemyviettel.interact.ViettelCallback;
 
-import io.reactivex.Observer;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
+import retrofit2.Call;
+import retrofit2.Response;
 
-
-/**
- * The ChangeAccount Presenter
- */
 public class MainPresenter extends Presenter<MainContract.View, MainContract.Interactor>
         implements MainContract.Presenter {
 
@@ -41,27 +37,35 @@ public class MainPresenter extends Presenter<MainContract.View, MainContract.Int
     @Override
     public void getCommonSetting(String token) {
         DialogUtils.showProgressDialog(containerView.getViewContext());
-        mInteractor.getCommonSetting(token, new Observer<GetCommonSettingResult>() {
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {
 
-            }
+//        RxJava
+//        DisposableManager.add(NetWorkController.getApiBuilderRxJava().getCommonSetting(token)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(getCommonSettingResult -> {
+//                    mView.setInformation(getCommonSettingResult);
+//                }, Throwable::printStackTrace));
 
+//      Retrofit2
+        mInteractor.getCommonSetting("", new ViettelCallback<GetCommonSettingResult>() {
             @Override
-            public void onNext(@NonNull GetCommonSettingResult getCommonSettingResult) {
+            public void onViettelSuccess(Call<GetCommonSettingResult> call, Response<GetCommonSettingResult> response) {
                 DialogUtils.dismissProgressDialog();
-                mView.setInformation(getCommonSettingResult);
+                mView.setInformation(response.body());
             }
 
             @Override
-            public void onError(@NonNull Throwable e) {
-
+            public void onViettelFailure(Call<GetCommonSettingResult> call) {
+                DialogUtils.dismissProgressDialog();
             }
 
-            @Override
-            public void onComplete() {
-
-            }
         });
     }
+
+    @Override
+    public void onDestroyView() {
+        //RxJava
+        //DisposableManager.dispose();
+    }
+
 }

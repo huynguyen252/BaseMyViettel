@@ -7,9 +7,6 @@ import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
 
 import butterknife.BindView;
 
-/**
- * The ChangeAccount Fragment
- */
 public class MainFragment extends ViewFragment<MainContract.Presenter>
         implements MainContract.View {
 

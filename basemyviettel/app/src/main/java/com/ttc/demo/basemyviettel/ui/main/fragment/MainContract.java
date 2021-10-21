@@ -4,8 +4,7 @@ import com.gemvietnam.base.viper.interfaces.IInteractor;
 import com.gemvietnam.base.viper.interfaces.IPresenter;
 import com.gemvietnam.base.viper.interfaces.PresentView;
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
-
-import io.reactivex.Observer;
+import com.ttc.demo.basemyviettel.interact.ViettelCallback;
 
 /**
  * The ChangeAccount Contract
@@ -13,7 +12,7 @@ import io.reactivex.Observer;
 interface MainContract {
 
     interface Interactor extends IInteractor<Presenter> {
-        void getCommonSetting(String token, Observer<GetCommonSettingResult> observer);
+        void getCommonSetting(String token, ViettelCallback<GetCommonSettingResult> callback);
     }
 
     interface View extends PresentView<Presenter> {

@@ -4,6 +4,7 @@ import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
 import com.ttc.demo.basemyviettel.data.model.UtilitiesResult;
 import io.reactivex.Observable;
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
@@ -13,13 +14,18 @@ import retrofit2.http.POST;
  */
 public interface GEMViettelAPI {
 
+  //Sử dụng RxJava
+//  @FormUrlEncoded
+//  @POST("getCommonSetting")
+//  Observable<GetCommonSettingResult> getCommonSetting(@Field("token") String token);
+
   @FormUrlEncoded
   @POST("getCommonSetting")
-  Observable<GetCommonSettingResult> getCommonSetting(@Field("token") String token);
+  Call<GetCommonSettingResult> getCommonSetting(@Field("token") String token);
 
   @FormUrlEncoded
   @POST("getFeatureGroupV2")
-  Observable<UtilitiesResult> getSearchUtilities2(@Field("token") String token,
+  Callback<UtilitiesResult> getSearchUtilities2(@Field("token") String token,
                                                   @Field("keySearch") String keySearch);
 
 }

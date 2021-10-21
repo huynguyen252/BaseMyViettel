@@ -3,12 +3,8 @@ package com.ttc.demo.basemyviettel.ui.main.fragment;
 import com.gemvietnam.base.viper.Interactor;
 import com.ttc.demo.basemyviettel.data.NetWorkController;
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
+import com.ttc.demo.basemyviettel.interact.ViettelCallback;
 
-import io.reactivex.Observer;
-
-/**
- * The ChangeAccount interactor
- */
 class MainInteractor extends Interactor<MainContract.Presenter>
         implements MainContract.Interactor {
 
@@ -17,7 +13,7 @@ class MainInteractor extends Interactor<MainContract.Presenter>
     }
 
     @Override
-    public void getCommonSetting(String token, Observer<GetCommonSettingResult> observer) {
-        NetWorkController.getCommonSettingResult(token,observer);
+    public void getCommonSetting(String token, ViettelCallback<GetCommonSettingResult> callback) {
+        NetWorkController.getCommonSettingResult(token, callback);
     }
 }

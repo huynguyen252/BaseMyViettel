@@ -49,5 +49,7 @@ public interface  IPresenter<V extends IView, I extends IInteractor> {
 
   void onFragmentDisplay();
 
+  void onDestroyView();
+
   boolean isViewShowing();
 }
