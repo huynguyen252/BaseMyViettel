@@ -1,0 +1,4 @@
+include ':Gensture'
+include ':GemCore'
+include ':app'
+rootProject.name = "BaseMyviettel"
