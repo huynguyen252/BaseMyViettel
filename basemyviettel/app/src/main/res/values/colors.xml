@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="chungld_black_text">#000000</color>
+    <color name="color_line_gray">#EEEEEE</color>
+    <color name="color_44494D">#44494D</color>
+    <color name="whiteSolid">#FFFFFF</color>
+    <color name="blackSolid">#000000</color>
+    <color name="default_color_app">#EE0033</color>
+    <color name="color_gray_opacity_60">#9944494D</color>
+    <color name="defau_color_btn_disable">#C4C4C4</color>
+    <color name="black_v5">#4B4B4B</color>
 </resources>

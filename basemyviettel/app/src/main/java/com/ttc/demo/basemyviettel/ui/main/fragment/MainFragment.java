@@ -1,5 +1,7 @@
 package com.ttc.demo.basemyviettel.ui.main.fragment;
 
+import android.widget.FrameLayout;
+
 import androidx.appcompat.widget.AppCompatTextView;
 import com.gemvietnam.base.viper.ViewFragment;
 import com.ttc.demo.basemyviettel.R;
@@ -32,4 +34,6 @@ public class MainFragment extends ViewFragment<MainContract.Presenter>
     public void setInformation(GetCommonSettingResult getCommonSettingResult) {
         tvResult.setText(getCommonSettingResult.getMessage());
     }
+
+
 }

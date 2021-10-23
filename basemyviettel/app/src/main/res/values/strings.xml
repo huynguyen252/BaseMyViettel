@@ -3,4 +3,23 @@
     <string name="second">giây</string>
     <string name="minutes">phút</string>
     <string name="hour">giờ</string>
+    <string name="search_hint">Tìm kiếm</string>
+    <string name="title_shopping_category_main_shop">Mua sắm</string>
+    <string name="title_shopping_category_main_shop_2">Sách hay</string>
+    <string name="title_shopping_category_main_shop_3">Bánh kẹo</string>
+    <string name="title_shopping_category_main_shop_4">Sản phẩm bán chạy</string>
+    <string name="title_shopping_category_main_shop_5">Mã giảm giá nổi bật</string>
+    <string name="title_internet_main_shop">Internet - Truyền hình số</string>
+    <string name="title_type_common">Kho sim số</string>
+    <string name="title_sim_main_shop">Kho sim số</string>
+    <string name="title_packdata_category_main_shop">Gói cước bán kèm số</string>
+    <string name="title_suggest_main_shop">Hướng dẫn mua hàng</string>
+    <string name="tat_ca">Tất cả</string>
+    <string name="choose_install_place">Chọn khu vực lắp đặt</string>
+    <string name="button_register_new_internet_television">Đăng ký mới dịch vụ Internet-Truyền hình số</string>
+    <string name="button_register_more_used_internet_television">Đăng ký thêm dịch vụ Internet-Truyền hình số</string>
+    <string name="label_tra_truoc">Trả trước</string>
+    <string name="label_tra_sau">Trả sau</string>
+    <string name="advanced_filter_">Tìm số</string>
+
 </resources>

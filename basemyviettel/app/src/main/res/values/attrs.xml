@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomHeaderView">
+        <attr name="left_btn" format="reference"/>
+        <attr name="tittle" format="string"/>
+        <attr name="left_txt" format="string"/>
+        <attr name="middle_txt" format="string"/>
+        <attr name="right_txt" format="string"/>
+        <attr name="date" format="string"/>
+        <attr name="first_right_btn" format="reference"/>
+        <attr name="second_right_btn" format="reference"/>
+        <attr name="bg_color" format="reference"/>
+    </declare-styleable>
+</resources>

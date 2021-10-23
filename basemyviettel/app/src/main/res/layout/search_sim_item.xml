@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:layout_marginTop="@dimen/dimen_10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginLeft="@dimen/dimen_16dp"
+        android:layout_marginEnd="@dimen/dimen_13dp"
+        android:layout_marginRight="@dimen/dimen_13dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black_v5"
+            android:textSize="@dimen/text_size_18sp"
+            app:fontFamily="@font/pf_beausanspro_bold"
+            android:text="@string/title_type_common" />
+        <TextView
+            android:id="@+id/layout_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_3dp"
+            android:text="@string/tat_ca"
+            android:textColor="@color/default_color_app"
+            android:textSize="@dimen/text_size_14sp"
+            android:visibility="visible"
+            app:fontFamily="@font/pf_beausanspro_bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_36dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_edittext_circle"
+        android:layout_marginHorizontal="@dimen/dimen_15dp">
+        <ImageView
+            android:layout_width="@dimen/dimen_30dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:padding="@dimen/dimen_5dp"
+            android:src="@drawable/ic_contact_search_new"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dimen_10dp"/>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/search_hint"
+            android:imeOptions="actionDone"
+            android:inputType="number|phone"
+            android:padding="@dimen/dimen_8dp"
+            android:textSize="@dimen/dimen_14dp"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@android:color/transparent"
+            android:textColor="@color/color_gray_opacity_60"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_10dp"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/layout_tra_truoc_option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/select_number_pre_checkbox"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:padding="@dimen/dimen_6dp"
+                app:srcCompat="@drawable/ic_radio_button_default" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_tra_truoc"
+                android:textColor="@color/blackSolid"
+                android:textSize="@dimen/text_size_16sp"
+                app:fontFamily="@font/sf_pro_regular" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_tra_sau_option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_24dp"
+            android:layout_marginLeft="@dimen/dimen_24dp"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/select_number_pos_checkbox"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:padding="@dimen/dimen_6dp"
+                app:srcCompat="@drawable/ic_radio_button_default" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_tra_sau"
+                android:textColor="@color/blackSolid"
+                android:textSize="@dimen/text_size_16sp"
+                app:fontFamily="@font/sf_pro_regular" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/select_number_button"
+        android:background="@drawable/bg_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_16dp"
+        android:layout_marginBottom="@dimen/size_16dp"
+        android:text="@string/advanced_filter_"
+        android:textColor="@color/whiteSolid"
+        android:textAllCaps="false" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/v_padding_start"
+            android:layout_width="@dimen/dimen_16dp"
+            android:layout_height="1dp"
+            android:visibility="invisible" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listItems"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/background_conner_gray_report_error_detail_note"
+            android:nestedScrollingEnabled="true"
+            android:paddingTop="@dimen/size_6dp"
+            android:paddingBottom="@dimen/size_8dp" />
+
+        <View
+            android:id="@+id/v_padding_end"
+            android:layout_width="@dimen/dimen_16dp"
+            android:layout_height="1dp"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_5dp"
+        android:background="@color/color_line_gray"
+        android:layout_marginTop="@dimen/dimen_10dp"/>
+
+</LinearLayout>

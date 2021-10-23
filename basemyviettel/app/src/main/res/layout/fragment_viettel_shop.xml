@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.viewpager2.widget.ViewPager2
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_170dp"/>
+
+            <me.relex.circleindicator.CircleIndicator3
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/dimen_20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+                <ImageView
+                    android:padding="@dimen/dimen_10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_120dp"/>
+
+                <include layout="@layout/layout_shopping_vtshop"/>
+                <include layout="@layout/layout_book_vtshop"/>
+                <include layout="@layout/layout_candy_vtshop"/>
+                <include layout="@layout/layout_popular_product_vtshop"/>
+                <include layout="@layout/layout_sale_vtshop"/>
+                <include layout="@layout/layout_internet_guide"/>
+                <include layout="@layout/search_sim_item"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
