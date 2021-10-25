@@ -1,8 +1,8 @@
 package com.ttc.demo.basemyviettel.ui.main.fragment;
 
-import android.widget.FrameLayout;
-
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.gemvietnam.base.viper.ViewFragment;
 import com.ttc.demo.basemyviettel.R;
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
@@ -14,6 +14,9 @@ public class MainFragment extends ViewFragment<MainContract.Presenter>
 
     @BindView(R.id.tv_result)
     AppCompatTextView tvResult;
+
+    @BindView(R.id.listItems)
+    RecyclerView listSimRecyclerview;
 
     public static MainFragment getInstance() {
         return new MainFragment();
