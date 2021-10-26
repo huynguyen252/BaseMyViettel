@@ -21,7 +21,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.ttc.demo.basemyviettel.R;
 
 import java.io.BufferedReader;
@@ -757,6 +760,18 @@ public class Utilities {
         }
         return "";
 
+    }
+
+    public static void loadImage(Context context, String url, ImageView imageView) {
+        if(url == null) url = "";
+        String imageUrl = url.replaceAll(" ","%20");
+        RequestOptions options = new RequestOptions();
+        options.placeholder(R.color.white);
+        Glide.with(context)
+                .load(imageUrl)
+//                .apply(RequestOptions.centerCropTransform())
+                .apply(options)
+                .into(imageView);
     }
 
 }

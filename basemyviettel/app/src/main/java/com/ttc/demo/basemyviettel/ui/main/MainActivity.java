@@ -7,7 +7,6 @@ import com.gemvietnam.base.viper.ViewFragment;
 import com.ttc.demo.basemyviettel.R;
 import com.ttc.demo.basemyviettel.ui.base.ViettelBaseActivity;
 import com.ttc.demo.basemyviettel.ui.main.fragment.MainPresenter;
-import com.ttc.demo.basemyviettel.widget.CustomHeaderView;
 
 import butterknife.BindView;
 

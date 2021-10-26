@@ -1,8 +1,16 @@
 package com.ttc.demo.basemyviettel.ui.main.fragment;
 
+import android.app.Activity;
+import android.util.Log;
+import android.widget.Toast;
+
 import com.gemvietnam.base.viper.Presenter;
 import com.gemvietnam.base.viper.interfaces.ContainerView;
+import com.gemvietnam.utils.NetworkUtils;
+import com.ttc.demo.basemyviettel.R;
+import com.ttc.demo.basemyviettel.data.NetWorkController;
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
+import com.ttc.demo.basemyviettel.ui.main.model.ShopHomeResult;
 import com.ttc.demo.basemyviettel.utils.DialogUtils;
 import com.ttc.demo.basemyviettel.interact.ViettelCallback;
 
@@ -13,10 +21,16 @@ public class MainPresenter extends Presenter<MainContract.View, MainContract.Int
         implements MainContract.Presenter {
 
     private ContainerView containerView;
+    private MainContract.View mViewShopHome;
 
     public MainPresenter(ContainerView containerView) {
         super(containerView);
         this.containerView = containerView;
+    }
+
+    public
+    MainPresenter(MainContract.View mViewShopHome) {
+        this.mViewShopHome = mViewShopHome;
     }
 
     @Override
@@ -63,9 +77,28 @@ public class MainPresenter extends Presenter<MainContract.View, MainContract.Int
     }
 
     @Override
+    public
+    void getShopHomeResult() {
+        NetWorkController.getShopHome(new ViettelCallback<ShopHomeResult>() {
+            @Override
+            public
+            void onViettelSuccess(Call<ShopHomeResult> call, Response<ShopHomeResult> response) {
+                if (response.body() != null ){
+                    mViewShopHome.setShopHome(response.body());
+                }
+            }
+
+            @Override
+            public
+            void onViettelFailure(Call<ShopHomeResult> call) {
+                Log.d("callShopHome", "errprs");
+            }
+        });
+    }
+
+    @Override
     public void onDestroyView() {
         //RxJava
         //DisposableManager.dispose();
     }
-
 }

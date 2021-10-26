@@ -21,5 +21,7 @@
     <string name="label_tra_truoc">Trả trước</string>
     <string name="label_tra_sau">Trả sau</string>
     <string name="advanced_filter_">Tìm số</string>
+    <string name="msg_network_not_available">Mất kết nối internet. Vui lòng kiểm tra lại wifi hoặc dữ liệu di động!</string>
+
 
 </resources>

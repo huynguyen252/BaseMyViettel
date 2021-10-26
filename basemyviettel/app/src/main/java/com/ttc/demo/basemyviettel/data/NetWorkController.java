@@ -1,5 +1,7 @@
 package com.ttc.demo.basemyviettel.data;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
@@ -9,6 +11,7 @@ import com.google.gson.stream.JsonWriter;
 import com.tbruyelle.rxpermissions.BuildConfig;
 import com.ttc.demo.basemyviettel.data.api.GEMViettelAPI;
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
+import com.ttc.demo.basemyviettel.ui.main.model.ShopHomeResult;
 import com.ttc.demo.basemyviettel.utils.Constants;
 import com.ttc.demo.basemyviettel.interact.ViettelCallback;
 
@@ -31,6 +34,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -255,6 +259,11 @@ public class NetWorkController {
 
     public static void getCommonSettingResult(String token, ViettelCallback<GetCommonSettingResult> callback) {
         Call<GetCommonSettingResult> call = getAPIBuilder().getCommonSetting(token);
+        call.enqueue(callback);
+    }
+
+    public static void getShopHome(ViettelCallback<ShopHomeResult> callback){
+        Call<ShopHomeResult> call = getAPIBuilder().getShopHome();
         call.enqueue(callback);
     }
 

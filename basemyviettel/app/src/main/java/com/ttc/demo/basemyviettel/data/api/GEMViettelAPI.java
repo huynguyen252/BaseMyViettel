@@ -2,6 +2,8 @@ package com.ttc.demo.basemyviettel.data.api;
 
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
 import com.ttc.demo.basemyviettel.data.model.UtilitiesResult;
+import com.ttc.demo.basemyviettel.ui.main.model.ShopHomeResult;
+
 import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,5 +29,8 @@ public interface GEMViettelAPI {
   @POST("getFeatureGroupV2")
   Callback<UtilitiesResult> getSearchUtilities2(@Field("token") String token,
                                                   @Field("keySearch") String keySearch);
+
+  @POST("getShopHome")
+  Call<ShopHomeResult> getShopHome();
 
 }
