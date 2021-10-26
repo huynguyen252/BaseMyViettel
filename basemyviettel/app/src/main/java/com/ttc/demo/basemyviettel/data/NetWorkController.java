@@ -9,6 +9,7 @@ import com.google.gson.stream.JsonWriter;
 import com.tbruyelle.rxpermissions.BuildConfig;
 import com.ttc.demo.basemyviettel.data.api.GEMViettelAPI;
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
+import com.ttc.demo.basemyviettel.data.model.SearchResult;
 import com.ttc.demo.basemyviettel.utils.Constants;
 import com.ttc.demo.basemyviettel.interact.ViettelCallback;
 
@@ -23,6 +24,7 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import io.reactivex.Single;
 import okhttp3.CertificatePinner;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
@@ -256,6 +258,10 @@ public class NetWorkController {
     public static void getCommonSettingResult(String token, ViettelCallback<GetCommonSettingResult> callback) {
         Call<GetCommonSettingResult> call = getAPIBuilder().getCommonSetting(token);
         call.enqueue(callback);
+    }
+
+    public static void getSearchResult(String text, int limit, int offset, int type, String token, ViettelCallback<SearchResult> callback) {
+        getAPIBuilder().getSearchResult(text, limit, offset, type, token).enqueue(callback);
     }
 
 }

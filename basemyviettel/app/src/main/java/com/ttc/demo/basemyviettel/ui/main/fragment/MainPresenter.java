@@ -61,6 +61,8 @@ public class MainPresenter extends Presenter<MainContract.View, MainContract.Int
 
         });
     }
+    @Override
+    public void searchResult()
 
     @Override
     public void onDestroyView() {

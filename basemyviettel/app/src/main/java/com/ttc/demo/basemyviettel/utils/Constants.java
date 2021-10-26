@@ -16,6 +16,7 @@ public class Constants {
     };
 
     public static final String BASE_SERVER_URL = "http://apiv3.viettel.vn/myviettel.php/";
+    public static final String BASE_URL = "http://68.183.226.200:3000/api/muasim/";
 
     public static final String KEY_TOKEN = "KEY_TOKEN_VIETTEL_DISCOVERY";
     public static final String KEY_SHARE_PREFERENCES = "KEY_SHARE_PREFERENCES_VIETTEL_DISCOVERY";

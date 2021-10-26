@@ -25,9 +25,9 @@ public abstract class ViettelBaseActivity extends ContainerActivity{
         DialogUtils.showProgressDialog(this);
     }
 
-    public boolean isShowing() {
-        return DialogUtils.isShowing();
-    }
+        public boolean isShowing() {
+            return DialogUtils.isShowing();
+        }
 
     public void hideProgress() {
         DialogUtils.dismissProgressDialog();
