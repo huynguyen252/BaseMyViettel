@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:layout_marginTop="@dimen/dimen_10dp"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
@@ -42,6 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_36dp"
         android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dimen_15dp"
         android:background="@drawable/bg_edittext_circle"
         android:layout_marginHorizontal="@dimen/dimen_15dp">
         <ImageView
@@ -52,6 +54,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/dimen_10dp"/>
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/search_sim"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -76,6 +79,7 @@
             android:id="@+id/layout_tra_truoc_option"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_5dp"
             android:background="@color/white"
             android:gravity="center_vertical"
             android:orientation="horizontal">
@@ -100,6 +104,7 @@
             android:id="@+id/layout_tra_sau_option"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_5dp"
             android:layout_marginStart="@dimen/dimen_24dp"
             android:layout_marginLeft="@dimen/dimen_24dp"
             android:background="@color/white"
@@ -147,7 +152,7 @@
             android:visibility="invisible" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listItems"
+            android:id="@+id/recyclerViewSim"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

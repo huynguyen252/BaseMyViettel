@@ -72,10 +72,31 @@ class ShopHomeResult implements Parcelable{
         @SerializedName("topBanner")
         private
         List<TopBannerModel> topBanner;
+        @SerializedName("sim")
+        private List<SimModel> sim;
+        @SerializedName("mobile")
+        private List<MobileModel> mobile;
+
+        public
+        List<TopBannerModel> getTopBanner() {
+            return topBanner;
+        }
+
+        public
+        List<SimModel> getSim() {
+            return sim;
+        }
+
+        public
+        List<MobileModel> getMobile() {
+            return mobile;
+        }
 
         protected
         Data(Parcel in) {
             topBanner = in.createTypedArrayList(TopBannerModel.CREATOR);
+            sim = in.createTypedArrayList(SimModel.CREATOR);
+            mobile = in.createTypedArrayList(MobileModel.CREATOR);
         }
 
         public static final Creator<Data> CREATOR = new Creator<Data>() {
@@ -92,11 +113,6 @@ class ShopHomeResult implements Parcelable{
             }
         };
 
-        public
-        List<TopBannerModel> getTopBanner() {
-            return topBanner;
-        }
-
         @Override
         public
         int describeContents() {
@@ -107,6 +123,8 @@ class ShopHomeResult implements Parcelable{
         public
         void writeToParcel(Parcel dest, int flags) {
             dest.writeTypedList(topBanner);
+            dest.writeTypedList(sim);
+            dest.writeTypedList(mobile);
         }
     }
 }

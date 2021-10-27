@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
@@ -14,7 +15,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <androidx.viewpager.widget.ViewPager
-                android:id="@+id/topBanner"
+                android:layout_marginTop="@dimen/dimen_30dp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_170dp"/>
 
@@ -22,8 +23,10 @@
                 android:id="@+id/indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dimen_30dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginVertical="@dimen/dimen_20dp"/>
+                app:ci_drawable="@drawable/circle_indicator_selected"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,12 +44,8 @@
                 <include layout="@layout/layout_popular_product_vtshop"/>
                 <include layout="@layout/layout_sale_vtshop"/>
                 <include layout="@layout/layout_internet_guide"/>
-                <include layout="@layout/search_sim_item"/>
+                <include layout="@layout/layout_store_sim_item"/>
             </LinearLayout>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn2"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
