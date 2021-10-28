@@ -39,5 +39,9 @@ public class Constants {
         public static final int ONE_HOUR = ONE_MINUTES * 60;
     }
 
+    public static final class PRODUCT{
+        public static final String LIMIT = "1";
+    }
+
 }
 

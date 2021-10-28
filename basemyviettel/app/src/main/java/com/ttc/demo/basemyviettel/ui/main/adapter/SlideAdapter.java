@@ -8,16 +8,16 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import com.ttc.demo.basemyviettel.R;
-import com.ttc.demo.basemyviettel.ui.main.model.TopBannerModel;
+import com.ttc.demo.basemyviettel.ui.main.model.sim.TopBannerModel;
+import com.ttc.demo.basemyviettel.utils.LoopViewPager;
 import com.ttc.demo.basemyviettel.utils.Utilities;
 
 import java.util.ArrayList;
 
 public
-class SlideAdapter extends PagerAdapter {
+class SlideAdapter extends PagerAdapter implements LoopViewPager {
     private Activity context;
     private
     ArrayList<TopBannerModel> listTopBanner;
@@ -32,6 +32,8 @@ class SlideAdapter extends PagerAdapter {
     @Override
     public
     Object instantiateItem(@NonNull ViewGroup container, int position) {
+        if (getRealCount() != 0)
+            position = position % getRealCount();
         TopBannerModel banner = listTopBanner.get(position);
         View view = LayoutInflater.from(context).inflate(R.layout.item_banner_viettel_shop, container, false);
         ImageView imv = view.findViewById(R.id.item_banner);
@@ -49,7 +51,22 @@ class SlideAdapter extends PagerAdapter {
     int getCount() {
         if(listTopBanner == null)
             return 0;
-        return listTopBanner.size();
+        else if (listTopBanner.size() < 2){
+            return listTopBanner.size();
+        }
+        else
+            return 1000;
+    }
+
+    @Override
+    public
+    int getRealCount() {
+        if(listTopBanner == null){
+            return 0;
+        }
+        else {
+            return listTopBanner.size();
+        }
     }
 
     @Override
@@ -63,4 +80,5 @@ class SlideAdapter extends PagerAdapter {
     void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((View) object);
     }
+
 }

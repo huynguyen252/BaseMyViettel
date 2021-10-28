@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dimen_16dp"
+    android:layout_marginLeft="@dimen/dimen_16dp"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:id="@+id/ll_item"
+        android:layout_width="321dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_mobile_package"
+            android:layout_width="@dimen/dimen_320dp"
+            android:layout_height="@dimen/dimen_165dp"
+            style="@style/Image"
+            android:scaleType="centerCrop"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/name_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:padding="@dimen/dimen_3dp"
+                android:textColor="@color/chungld_black_text"
+                android:textSize="@dimen/text_size_16sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:fontFamily="@font/sf_pro_regular"
+                app:layout_constraintEnd_toStartOf="@id/register_btn"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/register_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="TOMATO" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_price_tag"
+                android:layout_width="@dimen/size_21dp"
+                android:layout_height="@dimen/dimen_22dp"
+                android:layout_below="@id/name_tv"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:padding="@dimen/dimen_4dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name_tv"
+                app:srcCompat="@drawable/ic_tag_package_new" />
+
+            <TextView
+                android:id="@+id/price_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name_tv"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:padding="@dimen/dimen_3dp"
+                android:textColor="@color/default_color_app"
+                android:textSize="@dimen/text_size_12sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:fontFamily="@font/sf_pro_regular"
+                app:layout_constraintEnd_toStartOf="@id/register_btn"
+                app:layout_constraintLeft_toRightOf="@id/iv_price_tag"
+                app:layout_constraintRight_toLeftOf="@id/register_btn"
+                app:layout_constraintStart_toEndOf="@id/iv_price_tag"
+                app:layout_constraintTop_toBottomOf="@id/name_tv"
+                tools:text="0đ" />
+
+            <TextView
+                android:id="@+id/register_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_10dp"
+                android:background="@drawable/bg_register_mobile_package"
+                android:paddingHorizontal="@dimen/dimen_12dp"
+                android:paddingVertical="@dimen/dimen_8dp"
+                android:text="@string/register_tv"
+                android:textColor="@color/whiteSolid"
+                android:textSize="@dimen/text_size_14sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:fontFamily="@font/pf_beausanspro_bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/desc_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_44494D"
+            android:textSize="@dimen/text_size_14sp"
+            android:lines="3"
+            android:ellipsize="end"
+            android:visibility="visible"
+            app:fontFamily="@font/sf_uitext_regular"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad" />
+    </LinearLayout>
+
+</LinearLayout>

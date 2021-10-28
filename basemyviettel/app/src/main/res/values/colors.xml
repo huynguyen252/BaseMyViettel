@@ -17,4 +17,6 @@
     <color name="defau_color_btn_disable">#C4C4C4</color>
     <color name="black_v5">#4B4B4B</color>
     <color name="color_view_new">#E1E1E1</color>
+    <color name="dustyGray">#979797</color>
+    <color name="default_indicator_color_unselected">#E7E7E7</color>
 </resources>

@@ -11,12 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gemvietnam.utils.DeviceUtils;
 import com.ttc.demo.basemyviettel.R;
-import com.ttc.demo.basemyviettel.ui.main.model.SimModel;
+import com.ttc.demo.basemyviettel.ui.main.model.sim.SimModel;
 import com.ttc.demo.basemyviettel.utils.NumberUtils;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

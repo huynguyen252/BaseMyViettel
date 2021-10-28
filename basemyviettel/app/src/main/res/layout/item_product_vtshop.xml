@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="@dimen/dimen_16dp"
+    android:layout_marginTop="@dimen/dimen_16dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="@dimen/dimen_120dp"
+            android:layout_height="@dimen/dimen_120dp"
+            android:scaleType="fitXY"
+            style="@style/Image"
+            />
+
+        <TextView
+            android:id="@+id/tv_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_sale_product_hot_new"
+            android:gravity="center"
+            android:paddingHorizontal="8dp"
+            android:paddingBottom="12dp"
+            android:textColor="@color/whiteSolid"
+            android:textSize="@dimen/text_size_12sp"
+            android:visibility="visible"
+            app:fontFamily="@font/roboto_regular"
+            tools:text="30%" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/color_44494D"
+        android:textSize="@dimen/text_size_16sp"
+        app:fontFamily="@font/sf_pro_regular"
+        tools:text="Áo phông trơn trắng cổ tròn trẻ trung..." />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_promotion_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/default_color_app"
+            android:textSize="@dimen/dimen_12sp"
+            app:fontFamily="@font/sf_pro_text_semibold"
+            tools:text="350.000đ" />
+
+        <TextView
+            android:id="@+id/tv_base_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/dustyGray"
+            android:textSize="@dimen/size_11sp"
+            app:fontFamily="@font/sf_pro_text_semibold"
+            tools:text="450.000đ" />
+
+    </LinearLayout>
+</LinearLayout>

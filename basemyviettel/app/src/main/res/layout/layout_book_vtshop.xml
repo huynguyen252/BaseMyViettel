@@ -3,22 +3,26 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginTop="@dimen/dimen_10dp">
+    android:background="@color/white">
     <LinearLayout
+        android:layout_marginTop="@dimen/dimen_10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginHorizontal="@dimen/dimen_16dp">
+
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="0dp"
+            android:id="@+id/title_tv"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/title_shopping_category_main_shop_2"
-            android:textStyle="bold"
             android:fontFamily="@font/pf_beausans_pro"
+            android:text="@string/title_shopping_category_main_shop_2"
             android:textColor="@color/chungld_black_text"
-            android:textSize="@dimen/dimen_18sp"/>
+            android:textSize="@dimen/dimen_18sp"
+            android:textStyle="bold" />
         <TextView
+            android:id="@+id/layout_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tat_ca"
@@ -27,6 +31,8 @@
             android:fontFamily="@font/pf_beausans_pro" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
+        android:paddingHorizontal="@dimen/dimen_16dp"
+        android:id="@+id/listItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <View

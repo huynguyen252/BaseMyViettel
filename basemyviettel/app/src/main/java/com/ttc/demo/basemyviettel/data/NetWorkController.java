@@ -1,6 +1,6 @@
 package com.ttc.demo.basemyviettel.data;
 
-import android.util.Log;
+import android.os.Parcelable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -11,12 +11,16 @@ import com.google.gson.stream.JsonWriter;
 import com.tbruyelle.rxpermissions.BuildConfig;
 import com.ttc.demo.basemyviettel.data.api.GEMViettelAPI;
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
-import com.ttc.demo.basemyviettel.ui.main.model.ShopHomeResult;
+import com.ttc.demo.basemyviettel.ui.main.model.product.MVThemeProductModel;
+import com.ttc.demo.basemyviettel.ui.main.model.product.MVThemeProductResponse;
+import com.ttc.demo.basemyviettel.ui.main.model.sim.ShopHomeResponse;
 import com.ttc.demo.basemyviettel.utils.Constants;
 import com.ttc.demo.basemyviettel.interact.ViettelCallback;
 
 import java.io.IOException;
 import java.security.cert.CertificateException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
@@ -26,6 +30,13 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import kotlin.jvm.functions.Function2;
 import okhttp3.CertificatePinner;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
@@ -34,7 +45,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -262,9 +272,14 @@ public class NetWorkController {
         call.enqueue(callback);
     }
 
-    public static void getShopHome(ViettelCallback<ShopHomeResult> callback){
-        Call<ShopHomeResult> call = getAPIBuilder().getShopHome();
-        call.enqueue(callback);
-    }
+//    public static void getShopHome(ViettelCallback<ShopHomeResponse> callback){
+//        Call<ShopHomeResponse> call = getAPIBuilder().getShopHome();
+//        call.enqueue(callback);
+//    }
+//
+//    public static void getThemeProduct(String limit, ViettelCallback<MVThemeProductResponse> callback){
+//        Call<MVThemeProductResponse> call = getAPIBuilder().getThemeProduct(limit);
+//        call.enqueue(callback);
+//    }
 
 }

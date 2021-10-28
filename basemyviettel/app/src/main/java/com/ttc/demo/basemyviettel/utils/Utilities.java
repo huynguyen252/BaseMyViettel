@@ -774,5 +774,14 @@ public class Utilities {
                 .into(imageView);
     }
 
+    public static boolean isNullOrEmpty(String string) {
+        if (string == null || string.length() == 0 || "null".equals(string)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }
 

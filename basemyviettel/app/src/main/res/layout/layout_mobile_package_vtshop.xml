@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/dimen_10dp">
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginLeft="@dimen/dimen_16dp"
+        android:layout_marginEnd="@dimen/dimen_13dp"
+        android:layout_marginRight="@dimen/dimen_13dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/chungld_black_text"
+            android:textSize="@dimen/text_size_18sp"
+            app:fontFamily="@font/pf_beausans_pro"
+            android:text="@string/goi_cuoc" />
+        <TextView
+            android:id="@+id/layout_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_3dp"
+            android:text="@string/tat_ca"
+            android:textColor="@color/default_color_app"
+            android:textSize="@dimen/text_size_14sp"
+            android:visibility="visible"
+            app:fontFamily="@font/pf_beausanspro_bold" />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:id="@+id/listItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_5dp"
+        android:background="@color/color_line_gray"
+        android:layout_marginTop="@dimen/dimen_10dp"/>
+</LinearLayout>

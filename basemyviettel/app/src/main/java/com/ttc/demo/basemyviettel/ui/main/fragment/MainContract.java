@@ -5,9 +5,10 @@ import com.gemvietnam.base.viper.interfaces.IPresenter;
 import com.gemvietnam.base.viper.interfaces.PresentView;
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
 import com.ttc.demo.basemyviettel.interact.ViettelCallback;
-import com.ttc.demo.basemyviettel.ui.main.model.ShopHomeResult;
+import com.ttc.demo.basemyviettel.ui.main.model.product.MVThemeProductResponse;
+import com.ttc.demo.basemyviettel.ui.main.model.sim.ShopHomeResponse;
 
-import retrofit2.Response;
+import java.util.List;
 
 /**
  * The ChangeAccount Contract
@@ -20,12 +21,16 @@ interface MainContract {
 
     interface View extends PresentView<Presenter> {
         void setInformation(GetCommonSettingResult getCommonSettingResult);
-        void setShopHome(ShopHomeResult shopHome);
+//        void setShopHome(ShopHomeResponse shopHome);
+//        void setThemeProduct(MVThemeProductResponse themeProduct);
+        void setAllCategoryShopHome(List<Object> list);
     }
 
     interface Presenter extends IPresenter<View, Interactor> {
         void getCommonSetting(String token);
-        void getShopHomeResult();
+//        void getShopHomeResult();
+//        void getThemeProductResult(String limit);
+        void getAllCategoryShopHome(String limit);
     }
 
 }

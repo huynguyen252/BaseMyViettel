@@ -2,7 +2,8 @@ package com.ttc.demo.basemyviettel.data.api;
 
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
 import com.ttc.demo.basemyviettel.data.model.UtilitiesResult;
-import com.ttc.demo.basemyviettel.ui.main.model.ShopHomeResult;
+import com.ttc.demo.basemyviettel.ui.main.model.product.MVThemeProductResponse;
+import com.ttc.demo.basemyviettel.ui.main.model.sim.ShopHomeResponse;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
@@ -31,6 +32,17 @@ public interface GEMViettelAPI {
                                                   @Field("keySearch") String keySearch);
 
   @POST("getShopHome")
-  Call<ShopHomeResult> getShopHome();
+  Call<ShopHomeResponse> getShopHome();
+
+  @FormUrlEncoded
+  @POST("getThemeProducts")
+  Call<MVThemeProductResponse> getThemeProduct(@Field("isLimit") String limit);
+
+  @POST("getShopHome")
+  Observable<ShopHomeResponse> getShopHome1();
+
+  @FormUrlEncoded
+  @POST("getThemeProducts")
+  Observable<MVThemeProductResponse> getThemeProduct1(@Field("isLimit") String limit);
 
 }

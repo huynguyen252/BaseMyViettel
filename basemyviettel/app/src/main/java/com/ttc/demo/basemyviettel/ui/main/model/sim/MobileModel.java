@@ -1,4 +1,4 @@
-package com.ttc.demo.basemyviettel.ui.main.model;
+package com.ttc.demo.basemyviettel.ui.main.model.sim;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -11,6 +11,8 @@ class MobileModel implements Parcelable {
     private int id;
     @SerializedName("service_code")
     private String service_code;
+    @SerializedName("price")
+    private int price;
     @SerializedName("short_name")
     private String short_name;
     @SerializedName("short_description")
@@ -28,6 +30,11 @@ class MobileModel implements Parcelable {
     public
     String getService_code() {
         return service_code;
+    }
+
+    public
+    int getPrice() {
+        return price;
     }
 
     public
@@ -54,6 +61,7 @@ class MobileModel implements Parcelable {
     MobileModel(Parcel in) {
         id = in.readInt();
         service_code = in.readString();
+        price = in.readInt();
         short_name = in.readString();
         short_description = in.readString();
         image = in.readString();
@@ -85,6 +93,7 @@ class MobileModel implements Parcelable {
     void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeString(service_code);
+        dest.writeInt(price);
         dest.writeString(short_name);
         dest.writeString(short_description);
         dest.writeString(image);

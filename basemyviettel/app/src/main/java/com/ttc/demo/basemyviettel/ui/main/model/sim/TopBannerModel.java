@@ -1,11 +1,9 @@
-package com.ttc.demo.basemyviettel.ui.main.model;
+package com.ttc.demo.basemyviettel.ui.main.model.sim;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
-
-import java.io.Serializable;
 
 public
 class TopBannerModel implements Parcelable {

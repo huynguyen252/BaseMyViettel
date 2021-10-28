@@ -1,15 +1,14 @@
-package com.ttc.demo.basemyviettel.ui.main.model;
+package com.ttc.demo.basemyviettel.ui.main.model.sim;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
 import java.util.List;
 
 public
-class ShopHomeResult implements Parcelable{
+class ShopHomeResponse implements Parcelable{
     @SerializedName("errorCode")
     private int errorCode;
     @SerializedName("message")
@@ -18,23 +17,23 @@ class ShopHomeResult implements Parcelable{
     private Data data;
 
     protected
-    ShopHomeResult(Parcel in) {
+    ShopHomeResponse(Parcel in) {
         errorCode = in.readInt();
         message = in.readString();
         data = in.readParcelable(Data.class.getClassLoader());
     }
 
-    public static final Creator<ShopHomeResult> CREATOR = new Creator<ShopHomeResult>() {
+    public static final Creator<ShopHomeResponse> CREATOR = new Creator<ShopHomeResponse>() {
         @Override
         public
-        ShopHomeResult createFromParcel(Parcel in) {
-            return new ShopHomeResult(in);
+        ShopHomeResponse createFromParcel(Parcel in) {
+            return new ShopHomeResponse(in);
         }
 
         @Override
         public
-        ShopHomeResult[] newArray(int size) {
-            return new ShopHomeResult[size];
+        ShopHomeResponse[] newArray(int size) {
+            return new ShopHomeResponse[size];
         }
     };
 

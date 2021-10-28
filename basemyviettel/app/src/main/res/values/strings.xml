@@ -22,6 +22,7 @@
     <string name="label_tra_sau">Trả sau</string>
     <string name="advanced_filter_">Tìm số</string>
     <string name="msg_network_not_available">Mất kết nối internet. Vui lòng kiểm tra lại wifi hoặc dữ liệu di động!</string>
-
+    <string name="goi_cuoc">Gói cước bán kèm số</string>
+    <string name="register_tv">Đăng ký</string>
 
 </resources>
