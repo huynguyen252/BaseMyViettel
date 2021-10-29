@@ -9,6 +9,8 @@ import com.google.gson.stream.JsonWriter;
 import com.tbruyelle.rxpermissions.BuildConfig;
 import com.ttc.demo.basemyviettel.data.api.GEMViettelAPI;
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
+import com.ttc.demo.basemyviettel.data.model.GetShopHomeResult;
+import com.ttc.demo.basemyviettel.data.model.OmiSearchSim;
 import com.ttc.demo.basemyviettel.data.model.SearchResult;
 import com.ttc.demo.basemyviettel.utils.Constants;
 import com.ttc.demo.basemyviettel.interact.ViettelCallback;
@@ -24,7 +26,6 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-import io.reactivex.Single;
 import okhttp3.CertificatePinner;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
@@ -44,6 +45,7 @@ public class NetWorkController {
 
     private static volatile GEMViettelAPI apiBuilder;
     private static volatile GEMViettelAPI apiBuilderRxJava;
+    private static volatile GEMViettelAPI apiMockRxJava;
 
     public static OkHttpClient okHttpClient() {
         return okHttpClientWithTimeOut(30);
@@ -176,6 +178,23 @@ public class NetWorkController {
         }
         return apiBuilderRxJava;
     }
+    private static GEMViettelAPI getMockAPIBuilder() {
+        if (apiMockRxJava == null) {
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .registerTypeAdapter(Long.class, new LongTypeAdapter())
+                    .registerTypeAdapter(Integer.class, new IntegerTypeAdapter())
+                    .registerTypeAdapter(Double.class, new DoubleTypeAdapter())
+                    .create();
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(Constants.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .client(okHttpClient())
+                    .build();
+            apiMockRxJava = retrofit.create(GEMViettelAPI.class);
+        }
+        return apiMockRxJava;
+    }
 
     public static class LongTypeAdapter extends TypeAdapter<Long> {
         @Override
@@ -259,9 +278,9 @@ public class NetWorkController {
         Call<GetCommonSettingResult> call = getAPIBuilder().getCommonSetting(token);
         call.enqueue(callback);
     }
-
-    public static void getSearchResult(String text, int limit, int offset, int type, String token, ViettelCallback<SearchResult> callback) {
-        getAPIBuilder().getSearchResult(text, limit, offset, type, token).enqueue(callback);
+    public static void getShopHomeResult(ViettelCallback<GetShopHomeResult > callback) {
+        Call<GetShopHomeResult> call = getAPIBuilder().getShopHomeResult();
+        call.enqueue(callback);
     }
 
 }

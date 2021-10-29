@@ -1,78 +1,90 @@
 package com.ttc.demo.basemyviettel.data.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+public class SearchResult implements Parcelable {
+    @SerializedName("errorCode")
+    Integer errorCode = 0;
 
-public class SearchResult extends SimpleResult {
-    @SerializedName("data")
-    private List<NumberModel> data;
+    @SerializedName("message")
+    String message  ="Thành công";
 
-    public List<NumberModel> getData() {
-        return data;
+
+    public static final Creator<SearchResult> CREATOR = new Creator<SearchResult>() {
+        @Override
+        public SearchResult createFromParcel(Parcel in) {
+            return new SearchResult(in);
+        }
+
+        @Override
+        public SearchResult[] newArray(int size) {
+            return new SearchResult[size];
+        }
+    };
+
+    @Override
+    public String toString(){
+        return "SearchResult{" +
+                "errorCode=" +
+                errorCode +
+                ", message ='" +
+                message + '\'' +
+                '}';
     }
 
-//    public class SearchResultModel {
-//        @SerializedName("isdn")
-//        String isdn;
-//        @SerializedName("pre_price")
-//        String pre_price;
-//        @SerializedName("pos_price")
-//        String pos_price;
-////        @SerializedName("pledge_time")
-////        String pledge_time;
-//        @SerializedName("isdn_type")
-//        int isdn_type;
-//        @SerializedName("unit")
-//        String unit;
-//
-//        public SearchResultModel(String isdn, String pre_price, String pos_price, int isdn_type, String unit) {
-//            this.isdn = isdn;
-//            this.pre_price = pre_price;
-//            this.pos_price = pos_price;
-//            this.isdn_type = isdn_type;
-//            this.unit = unit;
-//        }
-//
-//        public String getIsdn() {
-//            return isdn;
-//        }
-//
-//        public void setIsdn(String isdn) {
-//            this.isdn = isdn;
-//        }
-//
-//        public String getPre_price() {
-//            return pre_price;
-//        }
-//
-//        public void setPre_price(String pre_price) {
-//            this.pre_price = pre_price;
-//        }
-//
-//        public String getPos_price() {
-//            return pos_price;
-//        }
-//
-//        public void setPos_price(String pos_price) {
-//            this.pos_price = pos_price;
-//        }
-//
-//        public int getIsdn_type() {
-//            return isdn_type;
-//        }
-//
-//        public void setIsdn_type(int isdn_type) {
-//            this.isdn_type = isdn_type;
-//        }
-//
-//        public String getUnit() {
-//            return unit;
-//        }
-//
-//        public void setUnit(String unit) {
-//            this.unit = unit;
-//        }
-//    }
-//
+    public Integer getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(Integer errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SimpleResult that = (SimpleResult) o;
+
+        if (!errorCode.equals(that.errorCode)) return false;
+        return message.equals(that.message);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = errorCode.hashCode();
+        result = 31 * result + message.hashCode();
+        return result;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(this.errorCode);
+        parcel.writeString(this.message);
+    }
+    public SearchResult() {
+
+    }
+    protected SearchResult(Parcel in) {
+        this.errorCode = in.readInt();
+        this.message = in.readString();
+    }
 }

@@ -1,10 +1,10 @@
 package com.ttc.demo.basemyviettel.data.api;
 
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
+import com.ttc.demo.basemyviettel.data.model.GetShopHomeResult;
 import com.ttc.demo.basemyviettel.data.model.SearchResult;
 import com.ttc.demo.basemyviettel.data.model.UtilitiesResult;
-import io.reactivex.Observable;
-import io.reactivex.Single;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.http.Field;
@@ -26,12 +26,13 @@ public interface GEMViettelAPI {
   Call<GetCommonSettingResult> getCommonSetting(@Field("token") String token);
 
   @FormUrlEncoded
-  @POST("omiSearchSim")
-  Call<SearchResult> getSearchResult(@Field("key_search") String text,
-                                     @Field("page_size") int limit,
-                                     @Field("page") int offset,
-                                     @Field("type") int type,
-                                     @Field("token") String token);
+  @POST("getFeatureGroupV2")
+  Callback<UtilitiesResult> getSearchUtilities2(@Field("token") String token,
+                                                @Field("keySearch") String keySearch);
+
+  @FormUrlEncoded
+  @POST("getShopHome")
+  Call<GetShopHomeResult> getShopHomeResult();
 
 
 }
