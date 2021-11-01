@@ -24,5 +24,10 @@
     <string name="msg_network_not_available">Mất kết nối internet. Vui lòng kiểm tra lại wifi hoặc dữ liệu di động!</string>
     <string name="goi_cuoc">Gói cước bán kèm số</string>
     <string name="register_tv">Đăng ký</string>
-
+    <string name="thue_bao_moi">Thuê bao mới</string>
+    <string name="chon_so">Chọn số</string>
+    <string name="chon_goi_cuoc">Chọn gói cước</string>
+    <string name="nhap_thong_tin">Nhập thông tin</string>
+    <string name="giao_hang">Giao hàng</string>
+    <string name="thanh_toan">Thanh toán</string>
 </resources>

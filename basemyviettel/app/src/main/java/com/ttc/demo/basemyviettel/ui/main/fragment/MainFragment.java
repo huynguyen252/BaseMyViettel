@@ -24,6 +24,7 @@ import com.ttc.demo.basemyviettel.ui.main.model.sim.ShopHomeResponse;
 import com.ttc.demo.basemyviettel.ui.main.model.sim.SimModel;
 import com.ttc.demo.basemyviettel.ui.main.model.sim.TopBannerModel;
 import com.ttc.demo.basemyviettel.utils.Constants;
+import com.ttc.demo.basemyviettel.utils.DialogUtils;
 import com.ttc.demo.basemyviettel.utils.Utilities;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class MainFragment extends ViewFragment<MainContract.Presenter>
     public
     void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainShopPresenter = new MainPresenter(this);
+        mainShopPresenter = new MainPresenter(getActivity(),this);
         listBanner = new ArrayList<>();
         listSim = new ArrayList<>();
         listMobile = new ArrayList<>();
@@ -170,6 +171,7 @@ public class MainFragment extends ViewFragment<MainContract.Presenter>
         listSim.clear();
         listMobile.clear();
         listTheme.clear();
+        DialogUtils.dismissProgressDialog();
         for (Object o : list){
             if(o instanceof ShopHomeResponse){
                 if(((ShopHomeResponse) o).getData().getTopBanner() != null){

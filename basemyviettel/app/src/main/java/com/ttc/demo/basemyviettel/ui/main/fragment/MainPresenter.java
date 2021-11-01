@@ -1,5 +1,6 @@
 package com.ttc.demo.basemyviettel.ui.main.fragment;
 
+import android.app.Activity;
 import android.util.Log;
 
 import com.gemvietnam.base.viper.Presenter;
@@ -29,6 +30,8 @@ public class MainPresenter extends Presenter<MainContract.View, MainContract.Int
         implements MainContract.Presenter {
 
     private ContainerView containerView;
+    private
+    Activity context;
     private MainContract.View mViewShopHome;
 
     public MainPresenter(ContainerView containerView) {
@@ -37,7 +40,8 @@ public class MainPresenter extends Presenter<MainContract.View, MainContract.Int
     }
 
     public
-    MainPresenter(MainContract.View mViewShopHome) {
+    MainPresenter(Activity context, MainContract.View mViewShopHome) {
+        this.context = context;
         this.mViewShopHome = mViewShopHome;
     }
 
@@ -127,6 +131,7 @@ public class MainPresenter extends Presenter<MainContract.View, MainContract.Int
     @Override
     public
     void getAllCategoryShopHome(String limit) {
+        DialogUtils.showProgressDialog(context);
         Observable<ShopHomeResponse> observable1 = NetWorkController.getApiBuilderRxJava().getShopHome1();
         Observable<MVThemeProductResponse> observable2 = NetWorkController.getApiBuilderRxJava().getThemeProduct1(limit);
         Observable.zip(observable1, observable2, (shopHomeResponse, mvThemeProductResponse) -> {

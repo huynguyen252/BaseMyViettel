@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.gemvietnam.utils.DeviceUtils;
 import com.ttc.demo.basemyviettel.R;
 import com.ttc.demo.basemyviettel.ui.main.model.sim.SimModel;
+import com.ttc.demo.basemyviettel.utils.Constants;
 import com.ttc.demo.basemyviettel.utils.NumberUtils;
 
 import java.util.ArrayList;
@@ -24,11 +25,23 @@ class StoreSimAdapter extends RecyclerView.Adapter<StoreSimAdapter.SimHolder> {
     private Activity context;
     private
     ArrayList<SimModel> listSim;
+    private
+    Constants.ORDER_TYPE orderType;
+    private StoreSimListener listener;
+
+    public interface StoreSimListener{
+        void onBuyClick(View view, int position);
+    }
 
     public
-    StoreSimAdapter(Activity context, ArrayList<SimModel> listSim) {
+    StoreSimAdapter(Activity context,
+                    ArrayList<SimModel> listSim,
+                    Constants.ORDER_TYPE orderType,
+                    StoreSimListener listener ) {
         this.context = context;
         this.listSim = listSim;
+        this.orderType = orderType;
+        this.listener = listener;
     }
 
     @NonNull
@@ -43,8 +56,16 @@ class StoreSimAdapter extends RecyclerView.Adapter<StoreSimAdapter.SimHolder> {
     public
     void onBindViewHolder(@NonNull SimHolder holder, int position) {
         holder.number.setText(NumberUtils.convertVietNamPhoneNumber(listSim.get(position).getIsdn()));
-        holder.price.setText(NumberUtils.formatPriceNumber(Integer.valueOf(listSim.get(position).getPre_price()))+" đ");
-
+        if(orderType == Constants.ORDER_TYPE.PRE){
+            if(!listSim.get(position).getPre_price().isEmpty()){
+                holder.price.setText(NumberUtils.formatPriceNumber(Integer.valueOf(listSim.get(position).getPre_price()))+" đ");
+            }
+        }
+        else if(orderType == Constants.ORDER_TYPE.POS){
+            if(!listSim.get(position).getPos_price().isEmpty()){
+                holder.price.setText(NumberUtils.formatPriceNumber(Integer.valueOf(listSim.get(position).getPos_price()))+" đ");
+            }
+        }
         int width = (int) (DeviceUtils.getDeviceSize(context).x * 0.77f);
         holder.itemView.getLayoutParams().width = width;
         if (position >= (getItemCount() / 3) * 3) {
@@ -71,4 +92,5 @@ class StoreSimAdapter extends RecyclerView.Adapter<StoreSimAdapter.SimHolder> {
             ButterKnife.bind(this, itemView);
         }
     }
+
 }

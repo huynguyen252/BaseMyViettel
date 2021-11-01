@@ -1,10 +1,5 @@
 package com.ttc.demo.basemyviettel.utils;
 
-import android.graphics.Bitmap;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-
 /**
  * Created by namnh40 on 6/15/2015.
  */
@@ -41,6 +36,17 @@ public class Constants {
 
     public static final class PRODUCT{
         public static final String LIMIT = "1";
+    }
+
+    public enum ORDER_TYPE{
+        PRE(1),
+        POS(2);
+
+        private int mValue;
+
+        ORDER_TYPE(int mValue) {
+            this.mValue = mValue;
+        }
     }
 
 }

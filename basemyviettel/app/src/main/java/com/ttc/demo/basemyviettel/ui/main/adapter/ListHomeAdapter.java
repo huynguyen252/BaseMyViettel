@@ -1,8 +1,12 @@
 package com.ttc.demo.basemyviettel.ui.main.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,14 +24,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 import com.ttc.demo.basemyviettel.R;
+import com.ttc.demo.basemyviettel.ui.main.detail.MVShopResultActivity;
+import com.ttc.demo.basemyviettel.ui.main.listener.InfoListener;
 import com.ttc.demo.basemyviettel.ui.main.model.product.MVInfoModel;
 import com.ttc.demo.basemyviettel.ui.main.model.product.MVProductGroupModel;
 import com.ttc.demo.basemyviettel.ui.main.model.product.MVThemeProductModel;
 import com.ttc.demo.basemyviettel.ui.main.model.sim.MobileModel;
 import com.ttc.demo.basemyviettel.ui.main.model.sim.SimModel;
 import com.ttc.demo.basemyviettel.ui.main.model.sim.TopBannerModel;
+import com.ttc.demo.basemyviettel.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -35,7 +41,6 @@ import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.relex.circleindicator.CircleIndicator;
 
 public
 class ListHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -58,6 +63,11 @@ class ListHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private int viewCountReal = 0;
     private int countDot;
     private int iPositionViewPager;
+    private
+    Constants.ORDER_TYPE orderSimType = Constants.ORDER_TYPE.PRE;
+
+    private
+    InfoListener infoListener;
 
     public
     ListHomeAdapter(Activity context, Timer timer,
@@ -108,6 +118,18 @@ class ListHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     topBannerHolder.vpBanner.setVisibility(View.VISIBLE);
                     SlideAdapter slideAdapter = new SlideAdapter(context, listTopBanner);
                     topBannerHolder.vpBanner.setAdapter(slideAdapter);
+                    //autoscroll
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public
+                        void run() {
+                            new Handler(Looper.getMainLooper()).post(() -> {
+                                try{
+                                    topBannerHolder.vpBanner.setCurrentItem(topBannerHolder.vpBanner.getCurrentItem() + 1, true);
+                                }catch (Exception e){}
+                            });
+                        }
+                    }, 3000, 5000);
                     viewCountReal = slideAdapter.getRealCount();
                     if(slideAdapter.getRealCount() != 0){
                         int numLoop = (slideAdapter.getCount()) / (slideAdapter.getRealCount());
@@ -147,24 +169,6 @@ class ListHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         public
                         void onPageScrollStateChanged(int state) {}
                     });
-                    //autoscroll
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public
-                        void run() {
-                            new Handler(Looper.getMainLooper()).post(() -> {
-                                int currentIt =  topBannerHolder.vpBanner.getCurrentItem();
-                                int totalIt = listTopBanner.size() - 1;
-                                if (currentIt < totalIt){
-                                    currentIt++;
-                                    topBannerHolder.vpBanner.setCurrentItem(currentIt);
-                                }
-                                else {
-                                    topBannerHolder.vpBanner.setCurrentItem(0);
-                                }
-                            });
-                        }
-                    }, 500, 3000);
                 }
                 break;
             case BOOK:
@@ -212,8 +216,24 @@ class ListHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     storeSimHolder.preCheckBox.setVisibility(View.VISIBLE);
                     storeSimHolder.button.setVisibility(View.VISIBLE);
                     //storeSimHolder.revSim.setLayoutManager(new LinearLayoutManager(context));
-                    StoreSimAdapter simAdapter = new StoreSimAdapter(context, listSim);
+                    StoreSimAdapter simAdapter = new StoreSimAdapter(context,
+                            listSim, orderSimType, new StoreSimAdapter.StoreSimListener() {
+                        @Override
+                        public
+                        void onBuyClick(View view, int position) {
+                            //search sim
+                        }
+                    });
                     storeSimHolder.revSim.setAdapter(simAdapter);
+                    storeSimHolder.setChecked(orderSimType);
+                    if (TextUtils.isEmpty(storeSimHolder.searchSim.getText())){
+                        storeSimHolder.button.setEnabled(false);
+                        storeSimHolder.button.setBackgroundResource(R.drawable.bg_button_disable);
+                    }
+                    else {
+                        storeSimHolder.button.setEnabled(true);
+                        storeSimHolder.button.setBackgroundResource(R.drawable.bg_button);
+                    }
                 }
                 Log.d("listSim", listSim.size()+"");
                 break;
@@ -281,8 +301,16 @@ class ListHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     class StoreSimHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.layout_search)
+        LinearLayout mLayoutSearch;
+        @BindView(R.id.cancel_layout_search)
+        ImageView mCancelLayout;
         @BindView(R.id.search_sim)
         AppCompatEditText searchSim;
+        @BindView(R.id.layout_tra_truoc_option)
+        LinearLayout mPrepayLayout;
+        @BindView(R.id.layout_tra_sau_option)
+        LinearLayout mPostpaidLayout;
         @BindView(R.id.select_number_pre_checkbox)
         AppCompatImageView preCheckBox;
         @BindView(R.id.select_number_pos_checkbox)
@@ -291,11 +319,72 @@ class ListHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         AppCompatButton button;
         @BindView(R.id.recyclerViewSim)
         RecyclerView revSim;
+        @BindView(R.id.layout_sim)
+        View btnAll;
         public
         StoreSimHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             revSim.setLayoutManager(new GridLayoutManager(context, 3, RecyclerView.HORIZONTAL, false));
+            mPrepayLayout.setOnClickListener(v -> {
+                if (orderSimType != Constants.ORDER_TYPE.PRE) {
+                    setChecked(Constants.ORDER_TYPE.PRE);
+                    notifyDataSetChanged();
+                }
+            });
+            mPostpaidLayout.setOnClickListener(v -> {
+                if (orderSimType != Constants.ORDER_TYPE.POS) {
+                    setChecked(Constants.ORDER_TYPE.POS);
+                    notifyDataSetChanged();
+                }
+            });
+            searchSim.addTextChangedListener(new TextWatcher() {
+                @Override
+                public
+                void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    mLayoutSearch.setBackgroundResource(R.drawable.bg_edittext_circle_seclected);
+                    button.setBackgroundResource(R.drawable.bg_button);
+                }
+
+                @Override
+                public
+                void onTextChanged(CharSequence s, int start, int before, int count) {
+                    mLayoutSearch.setBackgroundResource(R.drawable.bg_edittext_circle_seclected);
+                    mCancelLayout.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public
+                void afterTextChanged(Editable s) {
+                    mCancelLayout.setVisibility(View.VISIBLE);
+                }
+            });
+            mCancelLayout.setOnClickListener(v -> {
+                mLayoutSearch.setBackgroundResource(R.drawable.bg_edittext_circle);
+                searchSim.setText("");
+                searchSim.clearFocus();
+                button.setBackgroundResource(R.drawable.bg_button_disable);
+                mCancelLayout.setVisibility(View.GONE);
+            });
+            btnAll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public
+                void onClick(View v) {
+                    Intent i = new Intent(context, MVShopResultActivity.class);
+                    context.startActivity(i);
+                }
+            });
+        }
+        private void setChecked(Constants.ORDER_TYPE orderT) {
+            orderSimType = orderT;
+            if (orderSimType == Constants.ORDER_TYPE.PRE) {
+                preCheckBox.setImageResource(R.drawable.ic_radio_button_active);
+                posCheckBox.setImageResource(R.drawable.ic_radio_button_default);
+            } else {
+                posCheckBox.setImageResource(R.drawable.ic_radio_button_active);
+                preCheckBox.setImageResource(R.drawable.ic_radio_button_default);
+            }
+            searchSim.clearFocus();
         }
     }
 

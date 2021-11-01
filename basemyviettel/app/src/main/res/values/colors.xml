@@ -13,10 +13,16 @@
     <color name="whiteSolid">#FFFFFF</color>
     <color name="blackSolid">#000000</color>
     <color name="default_color_app">#EE0033</color>
+    <color name="default_color_app_opacity_40">#66EE0033</color>
+    <color name="ui_button_disable">#E7E7E7</color>
     <color name="color_gray_opacity_60">#9944494D</color>
     <color name="defau_color_btn_disable">#C4C4C4</color>
     <color name="black_v5">#4B4B4B</color>
     <color name="color_view_new">#E1E1E1</color>
-    <color name="dustyGray">#979797</color>
+    <color name="dustyGray">#E4E4E4</color>
+    <color name="color_727272">#727272</color>
+    <color name="color_ff7000">#ff7000</color>
     <color name="default_indicator_color_unselected">#E7E7E7</color>
+    <color name="apple">#58B84F</color>
+    <color name="default_color_app_opacity_10">#1AEE0033</color>
 </resources>
