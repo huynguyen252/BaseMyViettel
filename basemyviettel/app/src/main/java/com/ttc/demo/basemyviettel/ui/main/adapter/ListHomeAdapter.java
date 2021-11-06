@@ -66,9 +66,6 @@ class ListHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private
     Constants.ORDER_TYPE orderSimType = Constants.ORDER_TYPE.PRE;
 
-    private
-    InfoListener infoListener;
-
     public
     ListHomeAdapter(Activity context, Timer timer,
                     ArrayList<TopBannerModel> listTopBanner,
@@ -215,7 +212,6 @@ class ListHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     storeSimHolder.posCheckBox.setVisibility(View.VISIBLE);
                     storeSimHolder.preCheckBox.setVisibility(View.VISIBLE);
                     storeSimHolder.button.setVisibility(View.VISIBLE);
-                    //storeSimHolder.revSim.setLayoutManager(new LinearLayoutManager(context));
                     StoreSimAdapter simAdapter = new StoreSimAdapter(context,
                             listSim, orderSimType, new StoreSimAdapter.StoreSimListener() {
                         @Override
@@ -235,7 +231,6 @@ class ListHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         storeSimHolder.button.setBackgroundResource(R.drawable.bg_button);
                     }
                 }
-                Log.d("listSim", listSim.size()+"");
                 break;
             case MOBILE_PACKAGE:
                 CommonHolder mobileHolder = (CommonHolder) holder;
@@ -367,13 +362,9 @@ class ListHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 mCancelLayout.setVisibility(View.GONE);
                 button.setEnabled(false);
             });
-            btnAll.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public
-                void onClick(View v) {
-                    Intent i = new Intent(context, MVShopResultActivity.class);
-                    context.startActivity(i);
-                }
+            btnAll.setOnClickListener(v -> {
+                Intent i = new Intent(context, MVShopResultActivity.class);
+                context.startActivity(i);
             });
         }
         private void setChecked(Constants.ORDER_TYPE orderT) {

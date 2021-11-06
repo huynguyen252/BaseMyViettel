@@ -71,11 +71,9 @@ class ShipmentFragment extends ViewFragment<ShipmentContract.Presenter> implemen
         super.initLayout();
         ButterKnife.bind(getActivity());
         init();
-        checkArea();
         listener();
         presenter = new ShipmentPresenter(getActivity(), this);
         presenter.getListArea();
-        //presenter.getListShopAreaByCode();
     }
 
     private void init(){
@@ -88,9 +86,7 @@ class ShipmentFragment extends ViewFragment<ShipmentContract.Presenter> implemen
         revShopArea.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
         revShopArea.setAdapter(shopAreaAdapter);
     }
-    private void checkArea(){
 
-    }
     private
     void listener() {
         layoutProvince.setOnClickListener(v -> {
@@ -104,11 +100,9 @@ class ShipmentFragment extends ViewFragment<ShipmentContract.Presenter> implemen
                         }
                     }
                 }
-                Log.d("district", "click: "+listDistrict.size());
                 BottomDistrictFragment bottomDistrictFragment = new BottomDistrictFragment(listDistrict, districtModel -> {
                     tvDistrict.setText(districtModel.getName());
                     keyModel = districtModel;
-                    Log.d("callByCode", "listener: "+keyModel.getId());
                 });
                 bottomDistrictFragment.show(getChildFragmentManager(), bottomDistrictFragment.getTag());
             });
@@ -116,7 +110,7 @@ class ShipmentFragment extends ViewFragment<ShipmentContract.Presenter> implemen
 
         });
         layoutDistrict.setOnClickListener(v -> {
-            Toast.makeText(getActivity(), "Bạn phải chọn tỉnh/thành phố trước",Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.message_district,Toast.LENGTH_LONG).show();
         });
         btnSearchShop.setOnClickListener(v -> {
             if(keyModel == null){
@@ -133,8 +127,12 @@ class ShipmentFragment extends ViewFragment<ShipmentContract.Presenter> implemen
     void setListShopAreaByCode(List<ShopAreaModel> list) {
         DialogUtils.dismissProgressDialog();
         listShopArea.clear();
-        for (ShopAreaModel s : list){
-            listShopArea.add(s);
+        if(!list.isEmpty()){
+            for (ShopAreaModel s : list){
+                listShopArea.add(s);
+            }
+        }else {
+            Toast.makeText(getActivity(), R.string.khong_tim_thay_cua_hang, Toast.LENGTH_LONG).show();
         }
         shopAreaAdapter.notifyDataSetChanged();
     }
@@ -145,18 +143,20 @@ class ShipmentFragment extends ViewFragment<ShipmentContract.Presenter> implemen
         DialogUtils.dismissProgressDialog();
         listProvince.clear();
         listProvinceDetail.clear();
-        for (Object o : list){
-            if(o instanceof AreaResponse){
-                if(((AreaResponse) o).getData() != null){
-                    for (AreaModel a : ((AreaResponse) o).getData()){
-                        listProvince.add(a);
+        if(!list.isEmpty()){
+            for (Object o : list){
+                if(o instanceof AreaResponse){
+                    if(((AreaResponse) o).getData() != null){
+                        for (AreaModel a : ((AreaResponse) o).getData()){
+                            listProvince.add(a);
+                        }
                     }
                 }
-            }
-            if (o instanceof AreaDetailResponse){
-                if(((AreaDetailResponse) o).getData()!= null){
-                    for (AreaDetailModel a : ((AreaDetailResponse) o).getData()){
-                        listProvinceDetail.add(a);
+                if (o instanceof AreaDetailResponse){
+                    if(((AreaDetailResponse) o).getData()!= null){
+                        for (AreaDetailModel a : ((AreaDetailResponse) o).getData()){
+                            listProvinceDetail.add(a);
+                        }
                     }
                 }
             }

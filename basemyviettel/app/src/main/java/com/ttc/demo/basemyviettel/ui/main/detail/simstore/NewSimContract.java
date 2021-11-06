@@ -21,6 +21,5 @@ interface NewSimContract {
     interface Presenter extends IPresenter<View, Interactor> {
         void getSwitchFragmentStoreSim(int position);
         void getInitFragmentStoreSim(int position);
-        void replaceFragment();
     }
 }

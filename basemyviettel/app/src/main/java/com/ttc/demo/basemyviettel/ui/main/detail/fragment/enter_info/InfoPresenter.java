@@ -1,6 +1,7 @@
 package com.ttc.demo.basemyviettel.ui.main.detail.fragment.enter_info;
 
 import android.app.Activity;
+import android.util.Log;
 
 import com.gemvietnam.base.viper.Presenter;
 import com.gemvietnam.base.viper.interfaces.ContainerView;
@@ -82,6 +83,8 @@ class InfoPresenter extends Presenter<InfoContract.View, InfoContract.Interactor
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(objects -> {
                     viewInfo.setListArea(objects);
+                }, throwable -> {
+                    Log.e("Failure", throwable.getLocalizedMessage());
                 }));
     }
 

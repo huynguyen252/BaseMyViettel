@@ -41,16 +41,12 @@ class BottomDistrictFragment extends BottomSheetDialogFragment {
         View v = LayoutInflater.from(getContext()).inflate(R.layout.layout_bottom_sheet, null, false);
         bottomDistrict.setContentView(v);
         TextView title = v.findViewById(R.id.tv_title);
-        title.setText("Chọn quận/huyện");
+        title.setText(R.string.ntt_hint_district);
         RecyclerView rev = v.findViewById(R.id.rev_bottom_sheet);
         rev.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        DistrictAdapter adapter = new DistrictAdapter(list, new DistrictAdapter.ItemClickDistrictListener() {
-            @Override
-            public
-            void onClickItem(DistrictModel districtModel) {
-                listener.onClickItem(districtModel);
-                bottomDistrict.dismiss();
-            }
+        DistrictAdapter adapter = new DistrictAdapter(list, districtModel -> {
+            listener.onClickItem(districtModel);
+            bottomDistrict.dismiss();
         });
         rev.setAdapter(adapter);
         RecyclerView.ItemDecoration  itemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);

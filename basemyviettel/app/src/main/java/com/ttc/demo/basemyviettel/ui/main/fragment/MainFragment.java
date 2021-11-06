@@ -63,7 +63,6 @@ public class MainFragment extends ViewFragment<MainContract.Presenter>
         listSim = new ArrayList<>();
         listMobile = new ArrayList<>();
         listTheme = new ArrayList<>();
-        //bannerAdapter = new SlideAdapter(getActivity(), listBanner);
         mTimer = new Timer();
 
     }
@@ -100,8 +99,6 @@ public class MainFragment extends ViewFragment<MainContract.Presenter>
     }
 
     private void callApiShopHome(){
-//        mainShopPresenter.getShopHomeResult();
-//        mainShopPresenter.getThemeProductResult(Constants.PRODUCT.LIMIT);
         mainShopPresenter.getAllCategoryShopHome(Constants.PRODUCT.LIMIT);
     }
 
@@ -125,45 +122,6 @@ public class MainFragment extends ViewFragment<MainContract.Presenter>
         tvResult.setText(getCommonSettingResult.getMessage());
     }
 
-//    @Override
-//    public
-//    void setShopHome(ShopHomeResponse shopHome) {
-//        listBanner.clear();
-//        listSim.clear();
-//        listMobile.clear();
-//        if(shopHome.getData().getTopBanner() != null){
-//            for(TopBannerModel item : shopHome.getData().getTopBanner()){
-//                listBanner.add(item);
-//                Log.d("callShopHome", item.getImage());
-//            }
-//        }
-//        if (shopHome.getData().getSim() != null){
-//            for (SimModel item : shopHome.getData().getSim()){
-//                listSim.add(item);
-//            }
-//        }
-//        if (shopHome.getData().getMobile() != null){
-//            for (MobileModel item : shopHome.getData().getMobile()){
-//                listMobile.add(item);
-//            }
-//        }
-//        //bannerAdapter.notifyDataSetChanged();
-//        listHomeAdapter.notifyDataSetChanged();
-//        //Log.d("callShopHome", shopHome.getData().getSim().get(1).getIsdn() + shopHome.getData().getMobile().get(1).getImage());
-//    }
-
-//    @Override
-//    public
-//    void setThemeProduct(MVThemeProductResponse themeProduct) {
-//        listTheme.clear();
-//        if(themeProduct != null){
-//            for (MVThemeProductModel item : themeProduct.getListThemeProductModel()){
-//                listTheme.add(item);
-//            }
-//        }
-//        listHomeAdapter.notifyDataSetChanged();
-//    }
-
     @Override
     public
     void setAllCategoryShopHome(List<Object> list) {
@@ -172,29 +130,30 @@ public class MainFragment extends ViewFragment<MainContract.Presenter>
         listMobile.clear();
         listTheme.clear();
         DialogUtils.dismissProgressDialog();
-        for (Object o : list){
-            if(o instanceof ShopHomeResponse){
-                if(((ShopHomeResponse) o).getData().getTopBanner() != null){
-                    for(TopBannerModel item : ((ShopHomeResponse) o).getData().getTopBanner()){
-                        listBanner.add(item);
-                        Log.d("callShopHome", item.getImage());
+        if(!list.isEmpty()){
+            for (Object o : list){
+                if(o instanceof ShopHomeResponse){
+                    if(((ShopHomeResponse) o).getData().getTopBanner() != null){
+                        for(TopBannerModel item : ((ShopHomeResponse) o).getData().getTopBanner()){
+                            listBanner.add(item);
+                        }
+                    }
+                    if(((ShopHomeResponse) o).getData().getSim() != null){
+                        for(SimModel item : ((ShopHomeResponse) o).getData().getSim()){
+                            listSim.add(item);
+                        }
+                    }
+                    if(((ShopHomeResponse) o).getData().getMobile() != null){
+                        for(MobileModel item : ((ShopHomeResponse) o).getData().getMobile()){
+                            listMobile.add(item);
+                        }
                     }
                 }
-                if(((ShopHomeResponse) o).getData().getSim() != null){
-                    for(SimModel item : ((ShopHomeResponse) o).getData().getSim()){
-                        listSim.add(item);
-                    }
-                }
-                if(((ShopHomeResponse) o).getData().getMobile() != null){
-                    for(MobileModel item : ((ShopHomeResponse) o).getData().getMobile()){
-                        listMobile.add(item);
-                    }
-                }
-            }
-            if(o instanceof MVThemeProductResponse){
-                if(((MVThemeProductResponse) o).getListThemeProductModel() != null){
-                    for (MVThemeProductModel item : ((MVThemeProductResponse) o).getListThemeProductModel()){
-                        listTheme.add(item);
+                if(o instanceof MVThemeProductResponse){
+                    if(((MVThemeProductResponse) o).getListThemeProductModel() != null){
+                        for (MVThemeProductModel item : ((MVThemeProductResponse) o).getListThemeProductModel()){
+                            listTheme.add(item);
+                        }
                     }
                 }
             }

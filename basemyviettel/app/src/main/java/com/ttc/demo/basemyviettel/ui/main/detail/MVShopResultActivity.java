@@ -37,7 +37,5 @@ class MVShopResultActivity extends ViettelBaseActivity {
         orderState.put(STEP_PACKAGE_VAS, null);
         orderState.put(STEP_PACKAGE_MONEY_CARD, null);
         orderState.put(STEP_INFO_CUSTOMER, null);
-
-        orderState.put("state_sim", false);
     }
 }

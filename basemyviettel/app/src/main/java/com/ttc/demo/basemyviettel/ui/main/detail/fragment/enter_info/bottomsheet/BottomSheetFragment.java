@@ -42,15 +42,11 @@ class BottomSheetFragment extends BottomSheetDialogFragment {
         bottomSheetDialog.setContentView(v);
         RecyclerView rev = v.findViewById(R.id.rev_bottom_sheet);
         TextView title = v.findViewById(R.id.tv_title);
-        title.setText("Chọn tỉnh/thành phố");
+        title.setText(R.string.ntt_hint_province_city);
         rev.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        AreaAdapter adapter = new AreaAdapter(list, new AreaAdapter.ItemClickListener() {
-            @Override
-            public
-            void onClickItem(AreaModel areaModel) {
-                listener.onClickItem(areaModel);
-                bottomSheetDialog.dismiss();
-            }
+        AreaAdapter adapter = new AreaAdapter(list, areaModel -> {
+            listener.onClickItem(areaModel);
+            bottomSheetDialog.dismiss();
         });
         rev.setAdapter(adapter);
         RecyclerView.ItemDecoration  itemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);

@@ -150,26 +150,26 @@ class PaymentFragment extends ViewFragment<PaymentContract.Presenter> implements
             editShip.setVisibility(View.GONE);
         }
         if (number == null){
-            tvSim.setText("0(null)");
+            tvSim.setText(R.string.tv_number_null);
         }else{
             tvSim.setText(NumberUtils.convertVietNamPhoneNumber(number.getIsdn()));
         }
         if (orderType == null){
-            tvInfoSim.setText("Hòa mạng trả trước");
-            tvPriceSim.setText("0đ");
+            tvInfoSim.setText(R.string.info_sim_pre);
+            tvPriceSim.setText(R.string.price_default);
         }
         else if(orderType == Constants.ORDER_TYPE.PRE && number != null){
-            tvInfoSim.setText("Hòa mạng trả trước");
+            tvInfoSim.setText(R.string.info_sim_pre);
             tvPriceSim.setText(NumberUtils.formatPriceNumber(Integer.valueOf(number.getPrePrice()))+" đ");
             totalOrder += Long.valueOf(number.getPrePrice());
         }
         else if (orderType == Constants.ORDER_TYPE.POS && number != null){
-            tvInfoSim.setText("Hòa mạng trả sau");
+            tvInfoSim.setText(R.string.info_sim_pos);
             tvPriceSim.setText(NumberUtils.formatPriceNumber(Integer.valueOf(number.getPosPrice()))+" đ");
             totalOrder += Long.valueOf(number.getPosPrice());
         }
         if(moneyCard == null){
-            tvTotalMoneyCard.setText("0đ");
+            tvTotalMoneyCard.setText(R.string.price_default);
         }
         else {
             int money = Integer.parseInt(moneyCard);
@@ -178,7 +178,7 @@ class PaymentFragment extends ViewFragment<PaymentContract.Presenter> implements
         }
         if (mobile == null){
             llMoneyCard.setVisibility(View.GONE);
-            tvTotalPricePackage.setText("0đ");
+            tvTotalPricePackage.setText(R.string.price_default);
             tvNameMobilePk.setVisibility(View.GONE);
             tvVasPk.setVisibility(View.GONE);
         }else if(mobile != null) {

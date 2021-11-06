@@ -130,20 +130,13 @@ class NewSimPresenter extends Presenter<NewSimContract.View, NewSimContract.Inte
         }
     }
 
-
-    @Override
-    public
-    void replaceFragment() {
-
-    }
-
     @Override
     public
     void onStepSelectSimDone() {
         if (mobilePackagePresenter == null){
             mobilePackagePresenter = new MobilePackagePresenter(mContainerView);
         }
-        mView.setSwitchFragmentStoreSim(mobilePackagePresenter.setSelectedMobilePackageListener(this).getFragment(), 1);
+        mView.setSwitchFragmentStoreSim(mobilePackagePresenter.setSelectedMobilePackageListener(this).getFragment(), NewSimFragment.NUMBER_CHON_GOI_CUOC);
     }
 
     @Override
@@ -152,7 +145,7 @@ class NewSimPresenter extends Presenter<NewSimContract.View, NewSimContract.Inte
         if(infoPresenter == null){
             infoPresenter = new InfoPresenter(mContainerView);
         }
-        mView.setSwitchFragmentStoreSim(infoPresenter.setSelectInfoListener(this).getFragment(), 2);
+        mView.setSwitchFragmentStoreSim(infoPresenter.setSelectInfoListener(this).getFragment(), NewSimFragment.NUMBER_NHAP_THONG_TIN);
     }
 
     @Override
@@ -161,6 +154,6 @@ class NewSimPresenter extends Presenter<NewSimContract.View, NewSimContract.Inte
         if(shipmentPresenter == null){
             shipmentPresenter = new ShipmentPresenter(mContainerView);
         }
-        mView.setSwitchFragmentStoreSim(shipmentPresenter.getFragment(), 3);
+        mView.setSwitchFragmentStoreSim(shipmentPresenter.getFragment(), NewSimFragment.NUMBER_GIAO_HANG);
     }
 }

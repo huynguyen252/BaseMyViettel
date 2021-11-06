@@ -52,4 +52,10 @@
     <string name="dia_chi_nhan_sim">Địa chỉ nhận sim</string>
     <string name="thong_bao">Quý khách có thể đến bất kỳ cửa hàng nào của Viettel để thực hiện giao dịch hoặc đặt hẹn để không phải chờ đợi</string>
     <string name="search_shop">Tìm kiếm cửa hàng</string>
+    <string name="khong_tim_thay_cua_hang">Không tìm thấy cửa hàng gần đây</string>
+    <string name="message_district">Bạn phải chọn tỉnh/thành phố trước</string>
+    <string name="tv_number_null">0(null)</string>
+    <string name="info_sim_pre">Hòa mạng trả trước</string>
+    <string name="info_sim_pos">Hòa mạng trả sau</string>
+    <string name="price_default">0đ</string>
 </resources>

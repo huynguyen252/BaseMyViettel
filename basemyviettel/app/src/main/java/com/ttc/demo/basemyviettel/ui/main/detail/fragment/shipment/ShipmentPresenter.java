@@ -69,14 +69,13 @@ class ShipmentPresenter extends Presenter<ShipmentContract.View, ShipmentContrac
         Observable<ShopAreaResponse> data = NetWorkController.getApiBuilderRxJavaURLMyVT().getShopAreaByCode(areaCode);
         disposable.add(data.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<ShopAreaResponse>() {
-                    @Override
-                    public
-                    void accept(ShopAreaResponse shopAreaResponse) throws Exception {
+                .subscribe(shopAreaResponse -> {
+                    if(shopAreaResponse == null){
+                        viewShipment.setListShopAreaByCode(null);
+                    }else {
                         viewShipment.setListShopAreaByCode(shopAreaResponse.getData());
-                        Log.d("callByCode", "accept: ");
                     }
-                }));
+                }, throwable -> {Log.e("Failure", throwable.getLocalizedMessage());}));
     }
 
     @Override
@@ -95,6 +94,6 @@ class ShipmentPresenter extends Presenter<ShipmentContract.View, ShipmentContrac
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(objects -> {
                     viewShipment.setListArea(objects);
-                }));
+                }, throwable -> {Log.e("Failure", throwable.getLocalizedMessage());}));
     }
 }

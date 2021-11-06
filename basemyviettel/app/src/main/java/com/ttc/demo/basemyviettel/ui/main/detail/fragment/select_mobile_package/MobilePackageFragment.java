@@ -131,10 +131,6 @@ class MobilePackageFragment extends ViewFragment<MobilePackageContract.Presenter
             MVShopResultActivity.orderState.put(MVShopResultActivity.STEP_PACKAGE_MOBILE, mobileSelected);
             MVShopResultActivity.orderState.put(MVShopResultActivity.STEP_PACKAGE_VAS, vasSelected);
             MVShopResultActivity.orderState.put(MVShopResultActivity.STEP_PACKAGE_MONEY_CARD, String.valueOf(seekBar.getProgress()));
-//            Log.d("mapstatus",
-//                    ((MobilePackage) MVShopResultActivity.orderState.get(MVShopResultActivity.STEP_PACKAGE_MOBILE)).getService_code() +" "+
-//                            ((ServicePackage) MVShopResultActivity.orderState.get(MVShopResultActivity.STEP_PACKAGE_VAS)).getService_code() +" "+
-//                            MVShopResultActivity.orderState.get(MVShopResultActivity.STEP_PACKAGE_MONEY_CARD));
         });
         tvInfo.setText(NumberUtils.formatPriceNumber(seekBar.getProgress() * VALUE_MONEY)+"đ");
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -159,18 +155,20 @@ class MobilePackageFragment extends ViewFragment<MobilePackageContract.Presenter
         DialogUtils.dismissProgressDialog();
         listMobile.clear();
         listVas.clear();
-        for (Object o : list){
-            if (o instanceof MobilePackageResponse){
-                if(((MobilePackageResponse) o).getData() != null){
-                    for (MobilePackage m : ((MobilePackageResponse) o).getData()){
-                        listMobile.add(m);
+        if(!list.isEmpty()){
+            for (Object o : list){
+                if (o instanceof MobilePackageResponse){
+                    if(((MobilePackageResponse) o).getData() != null){
+                        for (MobilePackage m : ((MobilePackageResponse) o).getData()){
+                            listMobile.add(m);
+                        }
                     }
                 }
-            }
-            else if(o instanceof ServicePackageResponse){
-                if(((ServicePackageResponse) o).getData()!= null){
-                    for (ServicePackage s : ((ServicePackageResponse) o).getData()){
-                        listVas.add(s);
+                else if(o instanceof ServicePackageResponse){
+                    if(((ServicePackageResponse) o).getData()!= null){
+                        for (ServicePackage s : ((ServicePackageResponse) o).getData()){
+                            listVas.add(s);
+                        }
                     }
                 }
             }
@@ -182,10 +180,12 @@ class MobilePackageFragment extends ViewFragment<MobilePackageContract.Presenter
     @Override
     public
     void onMobileSelectedClick(MobilePackage mobilePackage) {
-        mobileSelected = mobilePackage;
-        btnContinue.setEnabled(true);
-        btnContinue.setBackgroundResource(R.drawable.bg_button);
-        btnContinue.setTextColor(Color.WHITE);
+        if(mobilePackage != null){
+            mobileSelected = mobilePackage;
+            btnContinue.setEnabled(true);
+            btnContinue.setBackgroundResource(R.drawable.bg_button);
+            btnContinue.setTextColor(Color.WHITE);
+        }
     }
 
     @Override
@@ -217,7 +217,9 @@ class MobilePackageFragment extends ViewFragment<MobilePackageContract.Presenter
     @Override
     public
     void onVasItemClick(ServicePackage servicePackage) {
-        vasSelected = servicePackage;
+        if(servicePackage != null){
+            vasSelected = servicePackage;
+        }
     }
 
     @Override

@@ -88,12 +88,16 @@ class NewSimFragment extends ViewFragment<NewSimContract.Presenter> implements N
         super.initLayout();
         EventBus.getDefault().register(this);
         ButterKnife.bind(getActivity());
+        init();
+    }
+
+    private void init(){
         layoutOrder.setVisibility(View.VISIBLE);
         tvHeaderSimStore.setText(R.string.thue_bao_moi);
         mListStoreSim = new ArrayList<>();
         mListFragment = new ArrayList<>();
-        initStepBar();
         tvNumberOrderSimStore.setVisibility(View.GONE);
+        initStepBar();
         stepAdapter = new StepStoreSimAdapter(mListStoreSim, getActivity());
         recyclerViewStepStoreSim.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         recyclerViewStepStoreSim.setItemAnimator(null);

@@ -166,7 +166,6 @@ class InfoFragment extends ViewFragment<InfoContract.Presenter> implements InfoC
                         }
                     }
                 }
-                Log.d("district", "click: "+listDistrict.size());
                 BottomDistrictFragment bottomDistrictFragment = new BottomDistrictFragment(listDistrict, districtModel -> {
                     tvDistrict.setText(districtModel.getName());
                 });
@@ -176,7 +175,7 @@ class InfoFragment extends ViewFragment<InfoContract.Presenter> implements InfoC
 
         });
         layoutDistrict.setOnClickListener(v -> {
-            Toast.makeText(getActivity(), "Bạn phải chọn tỉnh/thành phố trước",Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.message_district,Toast.LENGTH_LONG).show();
         });
         btnContinue.setOnClickListener(v -> {
             mPresenter.onStepEnterInfoDone();
@@ -202,23 +201,24 @@ class InfoFragment extends ViewFragment<InfoContract.Presenter> implements InfoC
         DialogUtils.dismissProgressDialog();
         listProvince.clear();
         listProvinceDetail.clear();
-        for (Object o : list){
-            if(o instanceof AreaResponse){
-                if(((AreaResponse) o).getData() != null){
-                    for (AreaModel a : ((AreaResponse) o).getData()){
-                        listProvince.add(a);
+        if(!list.isEmpty()){
+            for (Object o : list){
+                if(o instanceof AreaResponse){
+                    if(((AreaResponse) o).getData() != null){
+                        for (AreaModel a : ((AreaResponse) o).getData()){
+                            listProvince.add(a);
+                        }
                     }
                 }
-            }
-            if (o instanceof AreaDetailResponse){
-                if(((AreaDetailResponse) o).getData()!= null){
-                    for (AreaDetailModel a : ((AreaDetailResponse) o).getData()){
-                        listProvinceDetail.add(a);
+                if (o instanceof AreaDetailResponse){
+                    if(((AreaDetailResponse) o).getData()!= null){
+                        for (AreaDetailModel a : ((AreaDetailResponse) o).getData()){
+                            listProvinceDetail.add(a);
+                        }
                     }
                 }
             }
         }
-        Log.d("Province", listProvince.size() +" "+listProvinceDetail.size());
     }
 
     @Override

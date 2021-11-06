@@ -163,7 +163,6 @@ class SelectSimFragment extends ViewFragment<SelectSimContract.Presenter>
             //call search sim
         });
         btnContinue.setOnClickListener(v -> {
-            //select number
             //post saveBlockSimInfo
             mPresenter.saveBlockSimInfo();
             mPresenter.onStepSelectMobilePackage();
@@ -171,10 +170,6 @@ class SelectSimFragment extends ViewFragment<SelectSimContract.Presenter>
             //save data number
             MVShopResultActivity.orderState.put(MVShopResultActivity.STEP_NUMBER, numberModelSelected);
             MVShopResultActivity.orderState.put(MVShopResultActivity.STEP_NUMBER_TYPE, orderType);
-            Log.d("mapstatus",
-                    ((NumberModel) MVShopResultActivity.orderState.get(MVShopResultActivity.STEP_NUMBER)).getIsdn() +" "+
-                            MVShopResultActivity.orderState.get(MVShopResultActivity.STEP_NUMBER_TYPE));
-            MVShopResultActivity.orderState.put("select_sim", true);
         });
     }
 
@@ -183,8 +178,10 @@ class SelectSimFragment extends ViewFragment<SelectSimContract.Presenter>
     void setListNumber(List<NumberModel> listNumber) {
         DialogUtils.dismissProgressDialog();
         list.clear();
-        for (NumberModel i : listNumber){
-            list.add(i);
+        if(!listNumber.isEmpty()){
+            for (NumberModel i : listNumber){
+                list.add(i);
+            }
         }
         adapter.notifyDataSetChanged();
     }
@@ -210,8 +207,10 @@ class SelectSimFragment extends ViewFragment<SelectSimContract.Presenter>
     @Override
     public
     void onBuyClickedListener(NumberModel number) {
-        numberModelSelected = number;
-        btnContinue.setEnabled(true);
-        btnContinue.setBackgroundResource(R.drawable.bg_button);
+        if(number!= null){
+            numberModelSelected = number;
+            btnContinue.setEnabled(true);
+            btnContinue.setBackgroundResource(R.drawable.bg_button);
+        }
     }
 }

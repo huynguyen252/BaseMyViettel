@@ -34,18 +34,6 @@ public interface GEMViettelAPI {
   @POST("getCommonSetting")
   Call<GetCommonSettingResult> getCommonSetting(@Field("token") String token);
 
-  @FormUrlEncoded
-  @POST("getFeatureGroupV2")
-  Callback<UtilitiesResult> getSearchUtilities2(@Field("token") String token,
-                                                  @Field("keySearch") String keySearch);
-
-  @POST("getShopHome")
-  Call<ShopHomeResponse> getShopHome();
-
-  @FormUrlEncoded
-  @POST("getThemeProducts")
-  Call<MVThemeProductResponse> getThemeProduct(@Field("isLimit") String limit);
-
   @POST("getShopHome")
   Observable<ShopHomeResponse> getShopHome1();
 

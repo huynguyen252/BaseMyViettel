@@ -71,7 +71,8 @@ class SelectSimPresenter extends Presenter<SelectSimContract.View, SelectSimCont
         Observable<NumberResponse> observable = NetWorkController.getApiBuilderRxJava().getListNumber();
         disposable.add(observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(numberResponse -> searchSimView.setListNumber(numberResponse.getData())));
+                .subscribe(numberResponse -> searchSimView.setListNumber(numberResponse.getData())
+                        , throwable -> {Log.e("Failure", throwable.getLocalizedMessage());}));
 
     }
 

@@ -21,15 +21,11 @@ interface MainContract {
 
     interface View extends PresentView<Presenter> {
         void setInformation(GetCommonSettingResult getCommonSettingResult);
-//        void setShopHome(ShopHomeResponse shopHome);
-//        void setThemeProduct(MVThemeProductResponse themeProduct);
         void setAllCategoryShopHome(List<Object> list);
     }
 
     interface Presenter extends IPresenter<View, Interactor> {
         void getCommonSetting(String token);
-//        void getShopHomeResult();
-//        void getThemeProductResult(String limit);
         void getAllCategoryShopHome(String limit);
     }
 

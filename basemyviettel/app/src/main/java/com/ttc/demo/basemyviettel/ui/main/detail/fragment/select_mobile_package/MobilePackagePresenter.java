@@ -83,7 +83,8 @@ class MobilePackagePresenter extends Presenter<MobilePackageContract.View, Mobil
             return list;
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(objects -> viewMobilePackage.setDataPackage(objects)));
+                .subscribe(objects -> viewMobilePackage.setDataPackage(objects)
+                        , throwable -> {Log.e("Failure", throwable.getLocalizedMessage());}));
     }
 
     @Override

@@ -292,14 +292,4 @@ public class NetWorkController {
         call.enqueue(callback);
     }
 
-//    public static void getShopHome(ViettelCallback<ShopHomeResponse> callback){
-//        Call<ShopHomeResponse> call = getAPIBuilder().getShopHome();
-//        call.enqueue(callback);
-//    }
-//
-//    public static void getThemeProduct(String limit, ViettelCallback<MVThemeProductResponse> callback){
-//        Call<MVThemeProductResponse> call = getAPIBuilder().getThemeProduct(limit);
-//        call.enqueue(callback);
-//    }
-
 }
