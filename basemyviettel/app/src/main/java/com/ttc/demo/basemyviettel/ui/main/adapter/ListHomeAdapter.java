@@ -365,6 +365,7 @@ class ListHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 searchSim.clearFocus();
                 button.setBackgroundResource(R.drawable.bg_button_disable);
                 mCancelLayout.setVisibility(View.GONE);
+                button.setEnabled(false);
             });
             btnAll.setOnClickListener(new View.OnClickListener() {
                 @Override

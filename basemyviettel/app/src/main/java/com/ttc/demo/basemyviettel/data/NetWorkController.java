@@ -56,6 +56,7 @@ public class NetWorkController {
 
     private static volatile GEMViettelAPI apiBuilder;
     private static volatile GEMViettelAPI apiBuilderRxJava;
+    private static volatile GEMViettelAPI apiBuilderRxJavaMyVT;
 
     public static OkHttpClient okHttpClient() {
         return okHttpClientWithTimeOut(30);
@@ -187,6 +188,25 @@ public class NetWorkController {
             apiBuilderRxJava = retrofit.create(GEMViettelAPI.class);
         }
         return apiBuilderRxJava;
+    }
+
+    public static GEMViettelAPI getApiBuilderRxJavaURLMyVT() {
+        if (apiBuilderRxJavaMyVT == null) {
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .registerTypeAdapter(Long.class, new LongTypeAdapter())
+                    .registerTypeAdapter(Integer.class, new IntegerTypeAdapter())
+                    .registerTypeAdapter(Double.class, new DoubleTypeAdapter())
+                    .create();
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(Constants.BASE_SERVER_URL_MY_VIETTEL)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .client(okHttpClient())
+                    .build();
+            apiBuilderRxJavaMyVT = retrofit.create(GEMViettelAPI.class);
+        }
+        return apiBuilderRxJavaMyVT;
     }
 
     public static class LongTypeAdapter extends TypeAdapter<Long> {

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_big"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="D500T"
+        android:textSize="@dimen/dimen_27dp"
+        android:textColor="@color/black_v5"
+        android:fontFamily="@font/pf_beausanspro_bold"
+        android:padding="@dimen/dimen_8dp"
+        android:gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_dialog_small">
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="500.000đ"
+            android:textSize="@dimen/dimen_27dp"
+            android:textColor="@color/default_color_app"
+            android:fontFamily="@font/pf_beausanspro_bold"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="360 ngày"
+            android:textSize="@dimen/dimen_18dp"
+            android:textColor="@color/color_727272"
+            android:fontFamily="@font/pf_beausanspro_bold"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chi tiết gói"
+            android:textSize="@dimen/dimen_18dp"
+            android:textColor="@color/black_v5"
+            android:fontFamily="@font/pf_beausanspro_bold"
+            android:layout_marginHorizontal="@dimen/dimen_15dp"
+            android:gravity="left"/>
+        <TextView
+            android:id="@+id/tv_descripstion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Chính sách gói cước\r\n-  Có 60GB data tốc độ cao (5GB/30 ngày, hết 5GB tốc độ cao truy cập tốc độ thông thường). Chu kỳ 360 ngày.\r\n- Chính sách giá cước khác tính theo quy định gói cước chính.\r\n2. Hướng dẫn sử dụng\r\n- Hết 360 ngày hệ thống tự động gia hạn khuyến mại với cước phí là 500.000 đồng.\r\n- Để kiểm tra lưu lượng Data: KTTK gửi 191.\r\n- Để hủy dịch vụ: soạn HUY gửi 191."
+            android:layout_marginHorizontal="@dimen/dimen_10dp"
+            android:layout_marginBottom="5dp"
+            android:padding="@dimen/dimen_5dp"/>
+    </LinearLayout>
+</LinearLayout>

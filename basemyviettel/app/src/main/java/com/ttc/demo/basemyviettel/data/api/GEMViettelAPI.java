@@ -2,8 +2,16 @@ package com.ttc.demo.basemyviettel.data.api;
 
 import com.ttc.demo.basemyviettel.data.model.GetCommonSettingResult;
 import com.ttc.demo.basemyviettel.data.model.UtilitiesResult;
+import com.ttc.demo.basemyviettel.ui.main.detail.response.AreaDetailResponse;
+import com.ttc.demo.basemyviettel.ui.main.detail.response.AreaResponse;
+import com.ttc.demo.basemyviettel.ui.main.detail.response.MobilePackageResponse;
+import com.ttc.demo.basemyviettel.ui.main.detail.response.NumberResponse;
+import com.ttc.demo.basemyviettel.ui.main.detail.response.ServicePackageResponse;
+import com.ttc.demo.basemyviettel.ui.main.detail.response.ShopAreaResponse;
 import com.ttc.demo.basemyviettel.ui.main.model.product.MVThemeProductResponse;
 import com.ttc.demo.basemyviettel.ui.main.model.sim.ShopHomeResponse;
+
+import java.util.Objects;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
@@ -45,4 +53,22 @@ public interface GEMViettelAPI {
   @POST("getThemeProducts")
   Observable<MVThemeProductResponse> getThemeProduct1(@Field("isLimit") String limit);
 
+  @POST("omiSearchSim")
+  Observable<NumberResponse> getListNumber();
+
+  @POST("omiGetProductPackage")
+  Observable<MobilePackageResponse> getListMobilePackage();
+
+  @POST("omiGetVasPackage")
+  Observable<ServicePackageResponse> getListVasPackage();
+
+  @POST("omiGetAreaByParentCode")
+  Observable<AreaResponse> getListArea();
+
+  @POST("omiGetAllProvinces")
+  Observable<AreaDetailResponse> getListProvinceDetail();
+
+  @FormUrlEncoded
+  @POST("findShopByAreaCode")
+  Observable<ShopAreaResponse> getShopAreaByCode(@Field("area") String area);
 }

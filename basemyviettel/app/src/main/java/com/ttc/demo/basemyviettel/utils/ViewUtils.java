@@ -38,7 +38,6 @@ class ViewUtils {
         }
         FragmentTransaction ft = fragmentCurrent.getChildFragmentManager().beginTransaction();
         ft.show(fragment);
-        ft.setCustomAnimations(R.anim.push_left_in, R.anim.push_right_in);
         ft.commit();
         fragmentCurrent.getChildFragmentManager().executePendingTransactions();
     }

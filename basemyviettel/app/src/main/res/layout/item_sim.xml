@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dimen_16dp"
+        android:paddingVertical="@dimen/dimen_10dp">
+
+        <TextView
+            android:id="@+id/item_sim_number_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_14dp"
+            android:layout_marginLeft="@dimen/dimen_14dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_16sp"
+            tools:text="0976661497" />
+
+        <TextView
+            android:id="@+id/item_sim_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_10dp"
+            android:fontFamily="@font/sf_pro_text_bold"
+            android:textColor="@color/default_color_app"
+            android:textSize="@dimen/text_size_12sp"
+            tools:text="50.000đ" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgSelectItem"
+                android:layout_width="@dimen/dimen_46dp"
+                android:layout_height="@dimen/dimen_46dp"
+                android:layout_centerInParent="true"
+                android:padding="@dimen/dimen_14dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_radio_button_default" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dimen_16dp"
+        android:layout_marginRight="@dimen/dimen_16dp"
+        android:background="@color/dustyGray" />
+</LinearLayout>

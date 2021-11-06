@@ -1,5 +1,7 @@
 package com.ttc.demo.basemyviettel.ui.main.detail.simstore;
 
+import android.util.Log;
+
 import com.gemvietnam.base.viper.Presenter;
 import com.gemvietnam.base.viper.interfaces.ContainerView;
 import com.ttc.demo.basemyviettel.ui.main.detail.fragment.enter_info.InfoPresenter;
@@ -7,9 +9,12 @@ import com.ttc.demo.basemyviettel.ui.main.detail.fragment.payment.PaymentPresent
 import com.ttc.demo.basemyviettel.ui.main.detail.fragment.select_mobile_package.MobilePackagePresenter;
 import com.ttc.demo.basemyviettel.ui.main.detail.fragment.select_sim.SelectSimPresenter;
 import com.ttc.demo.basemyviettel.ui.main.detail.fragment.shipment.ShipmentPresenter;
+import com.ttc.demo.basemyviettel.ui.main.listener.OnStepDoneListener;
 
 public
-class NewSimPresenter extends Presenter<NewSimContract.View, NewSimContract.Interactor> implements NewSimContract.Presenter{
+class NewSimPresenter extends Presenter<NewSimContract.View, NewSimContract.Interactor>
+        implements NewSimContract.Presenter, OnStepDoneListener{
+
     private ContainerView containerView;
 
     private
@@ -59,19 +64,19 @@ class NewSimPresenter extends Presenter<NewSimContract.View, NewSimContract.Inte
                 if (selectSimPresenter == null){
                     selectSimPresenter = new SelectSimPresenter(mContainerView);
                 }
-                mView.setSwitchFragmentStoreSim(selectSimPresenter.getFragment(), position);
+                mView.setSwitchFragmentStoreSim(selectSimPresenter.setSelectSimListener(this).getFragment(), position);
                 break;
             case NewSimFragment.NUMBER_CHON_GOI_CUOC:
                 if (mobilePackagePresenter == null){
                     mobilePackagePresenter = new MobilePackagePresenter(mContainerView);
                 }
-                mView.setSwitchFragmentStoreSim(mobilePackagePresenter.getFragment(), position);
+                mView.setSwitchFragmentStoreSim(mobilePackagePresenter.setSelectedMobilePackageListener(this).getFragment(), position);
                 break;
             case NewSimFragment.NUMBER_NHAP_THONG_TIN:
                 if (infoPresenter == null){
                     infoPresenter = new InfoPresenter(mContainerView);
                 }
-                mView.setSwitchFragmentStoreSim(infoPresenter.getFragment(), position);
+                mView.setSwitchFragmentStoreSim(infoPresenter.setSelectInfoListener(this).getFragment(), position);
                 break;
             case NewSimFragment.NUMBER_GIAO_HANG:
                 if (shipmentPresenter == null){
@@ -97,19 +102,19 @@ class NewSimPresenter extends Presenter<NewSimContract.View, NewSimContract.Inte
             if(selectSimPresenter == null){
                 selectSimPresenter = new SelectSimPresenter(mContainerView);
             }
-            mView.setSwitchFragmentStoreSim(selectSimPresenter.getFragment(), position);
+            mView.setSwitchFragmentStoreSim(selectSimPresenter.setSelectSimListener(this).getFragment(), position);
         }
         else if(position == NewSimFragment.NUMBER_CHON_GOI_CUOC) {
             if(mobilePackagePresenter == null){
                 mobilePackagePresenter = new MobilePackagePresenter(mContainerView);
             }
-            mView.setSwitchFragmentStoreSim(mobilePackagePresenter.getFragment(), position);
+            mView.setSwitchFragmentStoreSim(mobilePackagePresenter.setSelectedMobilePackageListener(this).getFragment(), position);
         }
         else if(position == NewSimFragment.NUMBER_NHAP_THONG_TIN) {
             if(infoPresenter == null){
                 infoPresenter = new InfoPresenter(mContainerView);
             }
-            mView.setSwitchFragmentStoreSim(infoPresenter.getFragment(), position);
+            mView.setSwitchFragmentStoreSim(infoPresenter.setSelectInfoListener(this).getFragment(), position);
         }
         else if (position == NewSimFragment.NUMBER_GIAO_HANG) {
             if(shipmentPresenter == null){
@@ -125,9 +130,37 @@ class NewSimPresenter extends Presenter<NewSimContract.View, NewSimContract.Inte
         }
     }
 
+
     @Override
     public
     void replaceFragment() {
 
+    }
+
+    @Override
+    public
+    void onStepSelectSimDone() {
+        if (mobilePackagePresenter == null){
+            mobilePackagePresenter = new MobilePackagePresenter(mContainerView);
+        }
+        mView.setSwitchFragmentStoreSim(mobilePackagePresenter.setSelectedMobilePackageListener(this).getFragment(), 1);
+    }
+
+    @Override
+    public
+    void onStepSelectMobilePackageDone() {
+        if(infoPresenter == null){
+            infoPresenter = new InfoPresenter(mContainerView);
+        }
+        mView.setSwitchFragmentStoreSim(infoPresenter.setSelectInfoListener(this).getFragment(), 2);
+    }
+
+    @Override
+    public
+    void onStepEnterInfoDone() {
+        if(shipmentPresenter == null){
+            shipmentPresenter = new ShipmentPresenter(mContainerView);
+        }
+        mView.setSwitchFragmentStoreSim(shipmentPresenter.getFragment(), 3);
     }
 }

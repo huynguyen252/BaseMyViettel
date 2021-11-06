@@ -21,8 +21,10 @@
     <color name="color_view_new">#E1E1E1</color>
     <color name="dustyGray">#E4E4E4</color>
     <color name="color_727272">#727272</color>
+    <color name="color_E7E7E7">#E7E7E7</color>
     <color name="color_ff7000">#ff7000</color>
     <color name="default_indicator_color_unselected">#E7E7E7</color>
     <color name="apple">#58B84F</color>
     <color name="default_color_app_opacity_10">#1AEE0033</color>
+    <color name="color_828282">#828282</color>
 </resources>

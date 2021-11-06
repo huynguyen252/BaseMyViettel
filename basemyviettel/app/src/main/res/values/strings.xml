@@ -30,4 +30,26 @@
     <string name="nhap_thong_tin">Nhập thông tin</string>
     <string name="giao_hang">Giao hàng</string>
     <string name="thanh_toan">Thanh toán</string>
+    <string name="pack_of_data_">Gói cước</string>
+    <string name="benefit_package_">Dịch vụ GTGT</string>
+    <string name="nap_tien">Nạp tiền</string>
+    <string name="continue_register">Tiếp tục</string>
+    <string name="info_customer_ntt">Thông tin khách hàng</string>
+    <string name="sampling_ntt">Chọn mẫu</string>
+    <string name="ntt_hint_province_city">Chọn Tỉnh/Thành Phố</string>
+    <string name="ntt_hint_district">Chọn Quận/Huyện</string>
+    <string name="ntt_hint_wards">Chọn Phường/Xã</string>
+    <string name="paper_information">Thông tin giấy tờ</string>
+    <string name="chi_tiet">Chi tiết</string>
+    <string name="hoan_tat">Hoàn tất</string>
+    <string name="hinh_thuc_tt">Hình thức thanh toán</string>
+    <string name="customer_infor">Thông tin khách hàng</string>
+    <string name="tt_info_delivery">Thông tin giao hàng</string>
+    <string name="tt_info_order">Thông tin đơn hàng</string>
+    <string name="tong_chi_phi">Tổng chi phí</string>
+    <string name="dieu_khoan_mua_hang_3">Tôi đồng ý với các </string>
+    <string name="dieu_khoan_mua_hang_4"><u>điều khoản mua hàng</u></string>
+    <string name="dia_chi_nhan_sim">Địa chỉ nhận sim</string>
+    <string name="thong_bao">Quý khách có thể đến bất kỳ cửa hàng nào của Viettel để thực hiện giao dịch hoặc đặt hẹn để không phải chờ đợi</string>
+    <string name="search_shop">Tìm kiếm cửa hàng</string>
 </resources>

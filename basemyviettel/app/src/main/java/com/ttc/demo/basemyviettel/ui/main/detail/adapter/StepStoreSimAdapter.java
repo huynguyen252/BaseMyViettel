@@ -71,30 +71,27 @@ class StepStoreSimAdapter extends RecyclerView.Adapter<StepStoreSimAdapter.StepH
             holder.llFirst.setVisibility(View.VISIBLE);
             holder.vLine.setVisibility(View.VISIBLE);
         }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public
-            void onClick(View v) {
-                if (mPositionClick != position) {
-                    mPositionClick = position;
-                    if (onItemStepClickListener != null) {
-                        onItemStepClickListener.onItemClick(holder.itemView, stepModel, position);
-                    }
+        holder.itemView.setOnClickListener(v -> {
+            if (mPositionClick != position) {
+                mPositionClick = position;
+                if (onItemStepClickListener != null) {
+                    onItemStepClickListener.onItemClick(holder.itemView, stepModel, position);
                 }
             }
         });
-        if (stepModel.isVisible()){
-            holder.tvTitle.setVisibility(View.GONE);
-            holder.parentView.setVisibility(View.GONE);
-        }
-        else {
-            holder.tvTitle.setVisibility(View.VISIBLE);
-            holder.parentView.setVisibility(View.VISIBLE);
-        }
-        if(stepModel.isSelected()){
-            holder.tvFirst.setTextColor(context.getResources().getColor(R.color.default_color_app));
-            holder.tvLast.setTextColor(context.getResources().getColor(R.color.default_color_app));
+
+        if(!stepModel.isSelected()){
+            holder.tvFirst.setBackgroundResource(R.drawable.bg_circle_unselected);
+            holder.tvFirst.setTextColor(context.getResources().getColor(R.color.color_727272));
+            holder.tvLast.setBackgroundResource(R.drawable.bg_circle_unselected);
+            holder.tvLast.setTextColor(context.getResources().getColor(R.color.color_727272));
+            holder.tvTitle.setTextColor(context.getResources().getColor(R.color.ui_button_disable));
+            holder.imgFirst.setVisibility(View.GONE);
+            holder.imgLast.setVisibility(View.GONE);
+        } else if(stepModel.isSelected()){
+            holder.tvFirst.setTextColor(context.getResources().getColor(R.color.whiteSolid));
             holder.tvFirst.setBackgroundResource(R.drawable.bg_step_selected_1);
+            holder.tvLast.setTextColor(context.getResources().getColor(R.color.whiteSolid));
             holder.tvLast.setBackgroundResource(R.drawable.bg_step_selected_1);
             if(stepModel.isTextFocus()){
                 holder.tvTitle.setTextColor(context.getResources().getColor(R.color.default_color_app));
@@ -110,7 +107,8 @@ class StepStoreSimAdapter extends RecyclerView.Adapter<StepStoreSimAdapter.StepH
             }
             else {
                 holder.tvTitle.setTextColor(context.getResources().getColor(R.color.dustyGray));
-                holder.tvFirst.setBackgroundResource(R.drawable.bg_step_selected_1);
+                holder.tvFirst.setBackgroundResource(R.drawable.bg_step_unselected);
+
                 RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) holder.tvFirst.getLayoutParams();
                 params.width = DeviceUtils.dpToPx(context, 20);
                 params.height = DeviceUtils.dpToPx(context, 20);
@@ -123,35 +121,20 @@ class StepStoreSimAdapter extends RecyclerView.Adapter<StepStoreSimAdapter.StepH
             }
 
             if (stepModel.isValidate()) {
-                if(stepModel.isTextFocus()){
-                    holder.llFirst.setBackgroundResource(R.drawable.bg_selected_white);
-                    holder.llLast.setBackgroundResource(R.drawable.bg_selected_white);
-                }else {
-                    holder.llFirst.setBackgroundResource(R.drawable.brg_circle_selected_v4);
-                    holder.llLast.setBackgroundResource(R.drawable.brg_circle_selected_v4);
-                }
                 holder.imgFirst.setVisibility(View.VISIBLE);
                 holder.imgLast.setVisibility(View.VISIBLE);
                 holder.tvFirst.setBackgroundResource(R.drawable.brg_circle_selected_v4);
                 holder.tvFirst.setTextColor(context.getResources().getColor(R.color.whiteSolid));
                 holder.tvLast.setBackgroundResource(R.drawable.brg_circle_selected_v4);
                 holder.tvLast.setTextColor(context.getResources().getColor(R.color.whiteSolid));
+                holder.tvTitle.setTextColor(context.getResources().getColor(R.color.default_color_app));
             } else {
                 holder.imgFirst.setVisibility(View.GONE);
                 holder.imgLast.setVisibility(View.GONE);
             }
 
-        } else {
-            holder.llFirst.setBackgroundResource(R.drawable.bg_circle_unselected);
-            holder.llLast.setBackgroundResource(R.drawable.bg_circle_unselected);
-            holder.tvFirst.setBackgroundResource(R.drawable.bg_circle_unselected);
-            holder.tvFirst.setTextColor(context.getResources().getColor(R.color.color_727272));
-            holder.tvLast.setBackgroundResource(R.drawable.bg_circle_unselected);
-            holder.tvLast.setTextColor(context.getResources().getColor(R.color.color_727272));
-            holder.tvTitle.setTextColor(context.getResources().getColor(R.color.ui_button_disable));
-            holder.imgFirst.setVisibility(View.GONE);
-            holder.imgLast.setVisibility(View.GONE);
         }
+
         if (stepModel.isLineSelected()) {
             holder.vLine.setBackgroundResource(R.color.default_color_app);
         } else {

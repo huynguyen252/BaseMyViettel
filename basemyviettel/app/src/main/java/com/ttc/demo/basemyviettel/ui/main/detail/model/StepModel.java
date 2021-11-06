@@ -16,17 +16,13 @@ public class StepModel {
                      boolean isPreSelected,
                      boolean isLineSelected,
                      boolean isTextFocus,
-                     boolean isValidate,
-                     boolean isVisible,
-                     boolean isChangeTextNum) {
+                     boolean isValidate) {
         this.title = title;
         this.isSelected = isSelected;
         this.isPreSelected = isPreSelected;
         this.isLineSelected = isLineSelected;
         this.isTextFocus = isTextFocus;
         this.isValidate = isValidate;
-        this.isVisible = isVisible;
-        this.isChangeTextNum = isChangeTextNum;
     }
 
     public String getTitle() {

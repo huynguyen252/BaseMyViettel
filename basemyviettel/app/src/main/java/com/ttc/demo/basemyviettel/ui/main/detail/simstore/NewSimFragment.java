@@ -25,6 +25,7 @@ import com.ttc.demo.basemyviettel.ui.main.detail.model.StepModel;
 import com.ttc.demo.basemyviettel.ui.main.detail.eventbus.TitleEventBus;
 import com.ttc.demo.basemyviettel.ui.main.listener.ItemClickListener;
 import com.ttc.demo.basemyviettel.ui.main.listener.OnItemCountChangeListener;
+import com.ttc.demo.basemyviettel.ui.main.listener.OnStepDoneListener;
 import com.ttc.demo.basemyviettel.utils.ViewUtils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -89,34 +90,24 @@ class NewSimFragment extends ViewFragment<NewSimContract.Presenter> implements N
         ButterKnife.bind(getActivity());
         layoutOrder.setVisibility(View.VISIBLE);
         tvHeaderSimStore.setText(R.string.thue_bao_moi);
-        init();
-        initStepBar();
-        onFragmentIndexEvent(new FragmentIndexChangeEventBus(0));
-//        stepAdapter.notifyItemChangedData(5, true);
-//        stepAdapter.notifyItemChangedDataValidate(5, true);
-    }
-
-    private void init(){
         mListStoreSim = new ArrayList<>();
         mListFragment = new ArrayList<>();
+        initStepBar();
+        tvNumberOrderSimStore.setVisibility(View.GONE);
         stepAdapter = new StepStoreSimAdapter(mListStoreSim, getActivity());
         recyclerViewStepStoreSim.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         recyclerViewStepStoreSim.setItemAnimator(null);
         recyclerViewStepStoreSim.setHasFixedSize(false);
         stepAdapter.setOnStepClickListener(this);
         recyclerViewStepStoreSim.setAdapter(stepAdapter);
-        if(mPresenter != null){
-            mPresenter.replaceView();
-        }
-
     }
 
     private void initStepBar(){
-        mListStoreSim.add(new StepModel(getResources().getString(R.string.chon_so), false, false, false, true, false, false, false));
-        mListStoreSim.add(new StepModel(getResources().getString(R.string.chon_goi_cuoc), false, false, false, false, false, false, false));
-        mListStoreSim.add(new StepModel(getResources().getString(R.string.nhap_thong_tin), false, false, false, false, false, false, false));
-        mListStoreSim.add(new StepModel(getResources().getString(R.string.giao_hang), false, false, false, false, false, false, false));
-        mListStoreSim.add(new StepModel(getResources().getString(R.string.thanh_toan), false, false, false, false, false, false, false));
+        mListStoreSim.add(new StepModel(getResources().getString(R.string.chon_so), false, false, false, false, false));
+        mListStoreSim.add(new StepModel(getResources().getString(R.string.chon_goi_cuoc), false, false, false, false, false));
+        mListStoreSim.add(new StepModel(getResources().getString(R.string.nhap_thong_tin), false, false, false, false, false));
+        mListStoreSim.add(new StepModel(getResources().getString(R.string.giao_hang), false, false, false, false, false));
+        mListStoreSim.add(new StepModel(getResources().getString(R.string.thanh_toan), false, false, false, false, false));
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

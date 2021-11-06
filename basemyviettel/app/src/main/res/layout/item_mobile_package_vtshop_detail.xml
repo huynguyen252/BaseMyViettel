@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="6dp"
+    android:background="@drawable/background_border_banner_game"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingVertical="@dimen/dimen_16dp"
+    android:paddingStart="@dimen/dimen_16dp"
+    android:paddingLeft="@dimen/dimen_16dp"
+    android:paddingEnd="@dimen/dimen_8dp"
+    android:paddingRight="@dimen/dimen_8dp"
+    android:layout_marginHorizontal="@dimen/dimen_16dp">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgItemMimax"
+        android:layout_width="@dimen/dimen_62dp"
+        android:layout_height="@dimen/dimen_62dp"
+        app:srcCompat="@drawable/ic_viettel_4g_red" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/dimen_14dp"
+        android:layout_marginLeft="@dimen/dimen_14dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/sf_pro_text_bold"
+            android:maxLines="1"
+            android:textAllCaps="true"
+            android:textColor="@color/color_44494D"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="TOM70" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/sf_uitext_regular"
+            android:maxLines="1"
+            android:textColor="@color/color_44494D"
+            android:textSize="@dimen/text_size_12sp"
+            tools:text="TOM70 là gói cước dành ch..." />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_3dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dimen_12dp"
+                android:layout_height="@dimen/dimen_12dp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_price_tag_red" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_1dp"
+                android:layout_marginLeft="@dimen/dimen_3dp"
+                android:fontFamily="@font/sf_pro_text_bold"
+                android:textColor="@color/default_color_app"
+                android:textSize="@dimen/text_size_12sp"
+                tools:text="80.000đ/ ngày" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/item_service_chi_tiet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginLeft="@dimen/dimen_8dp"
+        android:fontFamily="@font/pf_beausanspro_bold"
+        android:padding="@dimen/dimen_8dp"
+        android:text="@string/chi_tiet"
+        android:textColor="@color/default_color_app"
+        android:textSize="@dimen/text_size_14sp" />
+
+</LinearLayout>

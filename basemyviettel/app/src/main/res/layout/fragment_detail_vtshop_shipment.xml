@@ -2,9 +2,113 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="shipment"/>
+        android:layout_height="wrap_content"
+        android:text="@string/dia_chi_nhan_sim"
+        android:textColor="@color/default_color_app"
+        android:textSize="@dimen/dimen_15dp"
+        android:fontFamily="@font/sf_pro_text_semibold"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/thong_bao"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:textSize="@dimen/dimen_11dp"
+        android:textStyle="italic"
+        android:gravity="center"/>
+
+    <RelativeLayout
+        android:id="@+id/province_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dimen_5dp"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:background="@drawable/bg_edittext_v2">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/province_edt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center_vertical"
+            android:hint="@string/ntt_hint_province_city"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/color_727272"
+            android:textColorHint="@color/color_727272"
+            android:textSize="@dimen/text_size_14sp"
+            android:fontFamily="@font/pf_beausanspro_bold" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_marginRight="@dimen/dimen_13dp"
+            android:layout_width="@dimen/size_18dp"
+            android:layout_height="@dimen/size_18dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_dropdown_new" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/district_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dimen_5dp"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:background="@drawable/bg_edittext_v2">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/district_edt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center_vertical"
+            android:hint="@string/ntt_hint_district"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/color_727272"
+            android:textColorHint="@color/color_727272"
+            android:textSize="@dimen/text_size_14sp"
+            android:fontFamily="@font/pf_beausanspro_bold" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_marginRight="@dimen/dimen_13dp"
+            android:layout_width="@dimen/size_18dp"
+            android:layout_height="@dimen/size_18dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_dropdown_new" />
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_search_shop_area"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_35dp"
+        android:text="@string/search_shop"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:layout_marginVertical="@dimen/dimen_10dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_button"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rev_shop_are"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:padding="@dimen/dimen_10dp"
+        />
+
 </LinearLayout>

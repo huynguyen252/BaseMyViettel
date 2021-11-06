@@ -40,7 +40,7 @@
                 android:id="@+id/img_first"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
-                android:layout_centerVertical="true"
+                android:layout_centerInParent="true"
                 android:src="@drawable/ic_check_mark"
                 android:visibility="visible" />
 
